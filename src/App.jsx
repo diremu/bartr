@@ -1,15 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {Routes, Route} from 'react-router'
+import Landing from './Landing.jsx'
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <div>
-        hello!
-      </div>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
     </>
   )
 }
