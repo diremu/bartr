@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import { Items, Categories, Testimonials } from "./components/data";
+import {FeaturesCard} from "./components/FeaturesCard"
 
 export default function Landing() {
   const imgUrl =
@@ -37,13 +38,21 @@ export default function Landing() {
               ))}
             </div>
           </div>
-          <div className="flex flex-col justify-start gap-4 mt-8">
+          <div className="flex flex-col justify-start gap-4 my-8">
             <h2 className="font-semibold text-xl">User Testimonials</h2>
             <div className="flex gap-2">
               {Testimonials.map((data, index) => (
-                <Card key={index} type="testimony" image={data.image} title={data.title} />
+                <Card key={index} type="testimony" image={data.image} title={data.title} subtitle={data.subtitle} />
               ))}
             </div>
+          </div>
+          <div className="mb-4">
+            <h3 className="text-3xl font-bold">Why Choose Bartr?</h3>
+            <p className="mt-4 font-[450]">Bartr provides a trusted and efficient marketplace for exchanging items with cash adjustments.</p>
+            <p  className="mb-6 font-[450]">Our platform ensures secure transactions, fair value assessments, and convenient logistics, <br/> making it easier than ever to upgrade your belongings.</p>
+          </div>
+          <div className="flex flex-row gap-3 ">
+
           </div>
         </div>
       </div>

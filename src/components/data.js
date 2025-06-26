@@ -59,6 +59,6 @@ export const Testimonials = [
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-XYpe-bMZ9ThGy6SLBJp87t6U9_-et9s_KrpF2ypXt9TKoWa22QNO6esYBExe4y-68awV29OUGw7RLlOcc4_ufB5QwciEgxDfOYZfHg_266lsGmSSM-4f5lMAbn5Rs6kkU-8azKynHHenOhhU4q5aaZ4Ora7PS9-0g3mcmlsgeR7UbLDA5OfwV37bW8knY85eZUed1YrppSGsst5wUmfEwtGG1-V3ELu_RjA3e9G2nYmaDfzhUXkbig7S1u8XW06qjOrjTDVhXC4",
         title: "Olivia's Gaming experience",
-        subtitle: "I traded my old gaming console for a new one, and it was a great deal. The other user was very friendly and the platform made everything easy.",
+        subtitle: "I traded my old gaming console for a new one, and it was a great deal.",
     }
 ]

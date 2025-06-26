@@ -10,9 +10,10 @@ const Card = ({ image, title, subtitle, type = "item" }) => {
         imgClass += "w-44 h-44 mb-2 rounded-lg";
         titleClass += "text-[16px] text-gray-700 mt-2";
     } else if (type === "testimony") {
-        cardClass += "p-4 w-80 h-60 justify-center";
-        imgClass += "w-52 h-52 rounded-full mb-4 border-4 border-gray-200 rounded-sm";
-        titleClass += "text-[18px] text-gray-700 mt-2";
+        cardClass += "p-4 w-80 h-72 justify-center";
+        imgClass += "w-52 h-52 rounded-full mb-4 rounded-sm";
+        titleClass += "text-[18px] text-gray-700 mt-2 text-left";
+        subtitleClass += "text-[14px] text-gray-500 text-left word-wrap";
     } else { // item
         cardClass += " w-64 h-64 items-start";
         imgClass += "w-36 h-36 mb-3 rounded-lg";
@@ -26,7 +27,7 @@ const Card = ({ image, title, subtitle, type = "item" }) => {
                 <img src={image} alt={title} className={imgClass} />
             )}
             <h2 className={titleClass}>{title}</h2>
-            {type === "item" && subtitle && (
+            {subtitle && (
                 <p className={subtitleClass}>{subtitle}</p>
             )}
         </div>
