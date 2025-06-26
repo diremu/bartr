@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-screen border-b-[1.8px] border-gray-100 h-16 flex items-center justify-between px-4">
+    <div className="border-b-[1.8px] border-gray-100 h-16 flex items-center justify-between px-4 max-w-screen">
       <nav className="flex items-center justify-between w-full px-2">
         <div className="flex items-center gap-10 basis-[50%]">
           <h1 className="text-2xl font-bold">Bartr</h1>
