@@ -6,14 +6,14 @@ const Card = ({ image, title, subtitle, type = "item" }) => {
     let subtitleClass = "text-center mt-1 ";
 
     if (type === "category") {
-        cardClass += "p-2 w-56 h-56 justify-start items-start";
-        imgClass += "w-44 h-44 mb-2 rounded-lg";
-        titleClass += "text-[16px] text-gray-700 mt-2";
+        cardClass += "p-2 w-56 h-48 md:w-[18%] md:h-[14vw] lg:w-[16%] lg:h-[12vw] xl:w-[15%] xl:h-[11vw] justify-start items-start";
+        imgClass += "w-40 h-32 md:w-[85%] md:h-[75%] mb-2 rounded-lg";
+        titleClass += "text-[16px] md:text-[17px] lg:text-[18px] text-gray-700 mt-2";
     } else if (type === "testimony") {
-        cardClass += "p-4 w-80 h-72 justify-center";
-        imgClass += "w-52 h-52 rounded-full mb-4 rounded-sm";
-        titleClass += "text-[18px] text-gray-700 mt-2 text-left";
-        subtitleClass += "text-[14px] text-gray-500 text-left word-wrap";
+        cardClass += "p-4 w-80 h-72 md:w-[30%] md:h-80 lg:w-[28%] lg:h-80 xl:w-[26%] xl:h-80 justify-center";
+        imgClass += "w-[65%] h-[60%] rounded-full mb-4 rounded-sm";
+        titleClass += "text-[18px] md:text-[19px] lg:text-[20px] text-gray-700 mt-2 text-left";
+        subtitleClass += "text-[14px] md:text-[15px] lg:text-[15px] text-gray-500 text-left word-wrap";
     } else { // item
         cardClass += " w-64 h-64 items-start";
         imgClass += "w-36 h-36 mb-3 rounded-lg";

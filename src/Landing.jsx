@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import { Items, Categories, Testimonials } from "./components/data";
-import {FeaturesCard} from "./components/FeaturesCard"
+import FeaturesCard from "./components/FeaturesCard"
 
 export default function Landing() {
   const imgUrl =
@@ -32,7 +32,7 @@ export default function Landing() {
           </div>
           <div className="flex flex-col justify-start gap-4 mt-8">
             <h2 className="font-semibold text-xl">Popular Categories</h2>
-            <div className="flex gap-2">
+            <div className="flex gap-2 md:gap-6 lg:gap-8 xl:gap-10 flex-wrap md:justify-center">
               {Categories.map((data, index) => (
                 <Card key={index} type="category" image={data.image} title={data.title} />
               ))}
@@ -40,7 +40,7 @@ export default function Landing() {
           </div>
           <div className="flex flex-col justify-start gap-4 my-8">
             <h2 className="font-semibold text-xl">User Testimonials</h2>
-            <div className="flex gap-2">
+            <div className="flex gap-2 md:gap-6 lg:gap-8 xl:gap-12 flex-wrap md:justify-center">
               {Testimonials.map((data, index) => (
                 <Card key={index} type="testimony" image={data.image} title={data.title} subtitle={data.subtitle} />
               ))}

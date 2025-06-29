@@ -1,16 +1,26 @@
 import { useNavigate } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../userSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isAuthenticated, user } = useSelector(state => state.user);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
+
   return (
     <div className="border-b-[1.8px] border-gray-100 h-16 flex items-center justify-between px-4 max-w-screen">
       <nav className="flex items-center justify-between w-full px-2">
         <div className="flex items-center gap-10 basis-[50%]">
-          <h1 className="text-2xl font-bold">Bartr</h1>
-          <p onClick={() => navigate("/")}>Home</p>
-          <p onClick={() => navigate("/categories")}>Categories</p>
-          <p onClick={() => navigate("/howitworks")}>How it works</p>
-          <p onClick={() => navigate("/faqs")}>FAQs</p>
+          <h1 className="text-2xl font-bold cursor-pointer" onClick={() => navigate("/")}>Bartr</h1>
+          <p className="cursor-pointer" onClick={() => navigate("/")}>Home</p>
+          <p className="cursor-pointer" onClick={() => navigate("/categories")}>Categories</p>
+          <p className="cursor-pointer" onClick={() => navigate("/howitworks")}>How it works</p>
+          <p className="cursor-pointer" onClick={() => navigate("/faqs")}>FAQs</p>
         </div>
         <div className="basis-[45%] flex items-center justify-between">
           <div className="relative w-full max-w-xs">
@@ -37,13 +47,39 @@ const Navbar = () => {
             </span>
           </div>
 
-          <div className="flex gap-2">
-            <button className="bg-blue-400 px-4 text-[14px] font-semibold py-2 rounded-3xl text-white">
+          <div className="flex gap-2 items-center">
+            <button className="bg-blue-400 px-4 text-[14px] font-semibold py-2 rounded-3xl text-white hover:bg-blue-500 transition-colors">
               List an Item
             </button>
-            <button className="py-2 px-4 font-semibold text-[14px] bg-gray-200 rounded-3xl">
-              Sign Up
-            </button>
+            
+            {isAuthenticated ? (
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-gray-700">
+                  Welcome, {user?.firstName}!
+                </span>
+                <button 
+                  onClick={handleLogout}
+                  className="py-2 px-4 font-semibold text-[14px] bg-red-100 text-red-700 rounded-3xl hover:bg-red-200 transition-colors"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                <button 
+                  onClick={() => navigate("/login")}
+                  className="py-2 px-4 font-semibold text-[14px] text-blue-600 rounded-3xl hover:bg-blue-50 transition-colors"
+                >
+                  Sign In
+                </button>
+                <button 
+                  onClick={() => navigate("/signup")}
+                  className="py-2 px-4 font-semibold text-[14px] bg-gray-200 rounded-3xl hover:bg-gray-300 transition-colors"
+                >
+                  Sign Up
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </nav>
