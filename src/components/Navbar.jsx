@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../userSlice";
 
@@ -13,7 +13,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="border-b-[1.8px] border-gray-100 h-16 flex items-center justify-between px-4 max-w-screen">
+    <div>
+      <div className="border-b-[1.8px] border-gray-100 h-16 flex items-center justify-between px-4 max-w-screen">
       <nav className="flex items-center justify-between w-full px-2">
         <div className="flex items-center gap-10 basis-[50%]">
           <h1 className="text-2xl font-bold cursor-pointer" onClick={() => navigate("/")}>Bartr</h1>
@@ -83,6 +84,8 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+    </div>
+    <Outlet />
     </div>
   );
 };
