@@ -56,6 +56,9 @@ const Signup = () => {
               sign in to your existing account
             </Link>
           </p>
+          <p onClick={() => navigate('/')} className="mt-2 text-center text-xl text-gray-600 cursor-pointer">
+            Exit here
+          </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">

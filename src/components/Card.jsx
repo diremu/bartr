@@ -10,8 +10,8 @@ const Card = ({ image, title, subtitle, type = "item" }) => {
         imgClass += "w-40 h-32 md:w-[85%] md:h-[75%] mb-2 rounded-lg";
         titleClass += "text-[16px] md:text-[17px] lg:text-[18px] text-gray-700 mt-2";
     } else if (type === "testimony") {
-        cardClass += "p-4 w-80 h-72 md:w-[30%] md:h-80 lg:w-[28%] lg:h-80 xl:w-[26%] xl:h-80 justify-center";
-        imgClass += "w-[65%] h-[60%] rounded-full mb-4 rounded-sm";
+        cardClass += "p-4 w-80 h-72 md:w-[30%] md:h-[50%] lg:w-[28%] lg:h-80 xl:w-[26%] xl:h-[60%] justify-center";
+        imgClass += "w-[85%] h-[80%] mb-4 rounded-sm";
         titleClass += "text-[18px] md:text-[19px] lg:text-[20px] text-gray-700 mt-2 text-left";
         subtitleClass += "text-[14px] md:text-[15px] lg:text-[15px] text-gray-500 text-left word-wrap";
     } else { // item

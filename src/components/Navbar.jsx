@@ -65,16 +65,16 @@ const Navbar = () => {
                 </button>
               </div>
             ) : (
-              <div className="flex gap-2">
+              <div className="flex gap-1">
                 <button 
                   onClick={() => navigate("/login")}
-                  className="py-2 px-4 font-semibold text-[14px] text-blue-600 rounded-3xl hover:bg-blue-50 transition-colors"
+                  className="py-2 px-2 font-semibold text-[14px] text-blue-600 rounded-3xl hover:bg-blue-50 transition-colors"
                 >
                   Sign In
                 </button>
                 <button 
                   onClick={() => navigate("/signup")}
-                  className="py-2 px-4 font-semibold text-[14px] bg-gray-200 rounded-3xl hover:bg-gray-300 transition-colors"
+                  className="py-2 px-2 font-semibold text-[14px] bg-gray-200 rounded-3xl hover:bg-gray-300 transition-colors"
                 >
                   Sign Up
                 </button>
