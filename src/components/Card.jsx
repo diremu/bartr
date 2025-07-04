@@ -1,4 +1,4 @@
-const Card = ({ image, title, subtitle, type = "item" }) => {
+const Card = ({ image, title, subtitle, alt, type = "item" }) => {
     // type: "item", "category", or "testimony"
     let cardClass = "flex flex-col items-center rounded-2xl bg-white ";
     let imgClass = "object-cover rounded mb-3 ";
@@ -24,7 +24,7 @@ const Card = ({ image, title, subtitle, type = "item" }) => {
     return (
         <div className={cardClass}>
             {image && (
-                <img src={image} alt={title} className={imgClass} />
+                <img src={image} alt={alt} className={imgClass} />
             )}
             <h2 className={titleClass}>{title}</h2>
             {subtitle && (
