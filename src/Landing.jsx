@@ -1,4 +1,3 @@
-import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import { Items, Categories, Testimonials, choiceCards } from "./components/data";
 import FeaturesCard from "./components/FeaturesCard"
@@ -9,8 +8,7 @@ export default function Landing() {
     "https://lh3.googleusercontent.com/aida-public/AB6AXuB9TxmopJZytwUCJUiPSVwGKGBUN35kGNQ9nTZ0QCeZL2GDs-8Rm3yuwK9uTiy1XM2fchfQRrWc_28tvjaxB82rPJ0qAclVCUGCim3nOcto0bvjw4ddwkcOHyuE08I_M0EFS9GLACaBCU1aOBpzcRhbMYiy65p5LrUJvFaCdMvamZs1SfS--T3c2r5uGwUuaGavDQskVvMFF2-OBJP7zkLJ6OqibgfRKky4uGBX4VNuqN98c45P7efWhYXijdbNyHwfIUvzuR7Hsn8";
     console.log(choiceCards[0].icon)
   return (
-    <div className="w-screen max-w-full h-screen ">
-      <Navbar />
+    <div className="w-screen max-w-full h-screen">
       <div className="flex flex-col items-center h-full">
         <div className="p-6 w-full max-w-4xl">
           <img
