@@ -5,6 +5,7 @@ import Signup from "./components/Signup.jsx";
 import Categories from "./components/Categories.jsx";
 import Navbar from "./components/Navbar.jsx";
 import AuthNavbar from "./components/AuthNavbar.jsx";
+import Item from "./components/Item.jsx";
 import "./App.css";
 
 function App() {
@@ -17,11 +18,11 @@ function App() {
         </Route>
         <Route element={<Navbar />}>
           <Route path="/" element={<Landing />} />
-          <Route path="/categories" element={<Categories />}>
-            <Route path="/categories/:category" element={<Categories />} />
+          <Route path="/categories">
+            <Route path=":category" element={<Categories />} />
             <Route
-              path="/categories/:category/:item"
-              element={<Categories />}
+              path=":category/:item"
+              element={<Item />}
             />
           </Route>
         </Route>
