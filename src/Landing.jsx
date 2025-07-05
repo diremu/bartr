@@ -10,7 +10,7 @@ export default function Landing() {
   return (
     <div className="w-screen max-w-full h-screen">
       <div className="flex flex-col items-center h-full">
-        <div className="p-6 w-full max-w-4xl">
+        <div className="p-6 w-full max-w-4xl xl:max-w-6xl">
           <img
             className="w-full h-80 object-cover bg-center bg-no-repeat bg-cover rounded-xl"
             src={imgUrl}
@@ -62,10 +62,10 @@ export default function Landing() {
               ))}
           </div>
         </div>
-        <div className="xl:my-[150px] md:my-[100px] my-[70px] mx-4">
+        <div className="xl:my-[100px] md:my-[70px] my-[70px] mx-4">
             <h2 className="text-left text-4xl font-bold">Ready to Swap?</h2>
             <p className=" mt-3 mb-6">Join Bartr today and start exchanging your items for cash and new treasures.</p>
-            <button className="bg-blue-300 px-4 py-2 rounded-4xl">Get Started</button>
+            <button className="bg-blue-300 px-4 py-2 rounded-4xl mx-auto block">Get Started</button>
         </div>
         <Footer />
       </div>

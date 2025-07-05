@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="border-b-[1.8px] lg:px-16 border-gray-100 h-16 flex items-center justify-between px-4 max-w-screen">
+      <div className="border-b-[1.8px] lg:px-[5%] border-gray-100 h-16 flex items-center justify-between px-4 max-w-screen">
       <nav className="flex items-center justify-between w-full px-2">
         <div className="flex items-center gap-10 basis-[42%]">
           <h1
@@ -81,13 +81,13 @@ const Navbar = () => {
               <div className="flex gap-6 w-full justify-center ">
                 <button
                   onClick={() => navigate("/login")}
-                  className="py-2 px-2 font-semibold text-[14px] text-blue-600 rounded-3xl hover:bg-blue-50 transition-colors"
+                  className="py-2 px-2 xl:px-4 font-semibold text-[14px] text-blue-600 rounded-3xl hover:bg-blue-50 transition-colors"
                 >
                   Sign In
                 </button>
                 <button
                   onClick={() => navigate("/signup")}
-                  className="py-2 px-2 font-semibold text-[14px] bg-gray-200 rounded-3xl hover:bg-gray-300 transition-colors"
+                  className="py-2 px-2 xl:px-4 font-semibold text-[14px] bg-gray-200 rounded-3xl hover:bg-gray-300 transition-colors"
                 >
                   Sign Up
                 </button>
