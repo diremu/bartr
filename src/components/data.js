@@ -3,31 +3,36 @@ export const Items = [
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDxbQLC5FkOnWDr3FKkDahLzx-zpHpaHG4RTqRVlKO3HI7eW4Im-yhDZY1S5Orx9F_9ZqTGyuboT8hLJvDYFRwKMHudKOBXWRwU3TkMFpS9tK4FjDGN6F0JdG1PZFq6uPQtKPVIf6DxNYEy2siu-5A9tcXMlTtxS7UdeQxq-zCS3pR2nUkhVbaRAZssBTJsgv70LGG3GbuV8UQenHQslD8ihQqik5Mu-tE3qMGESQgYHcCVnPp15XqHlzYxqsAs0Gh20hNAkpYeRJs",
         title: "Modern Sofa",
         subtitle: "Fairly New",
-        alt: "A fairly new modern sofa"
+        alt: "A fairly new modern sofa",
+        category: "furniture"
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTuYLpYDeWXm_nPtLwEi4xCVEuRneAPsOww1zIqRN4P1PUrkWKXtf-05juLp_0Un3AEPG3gf1AzVLHxyMO09mZyaW_Qf7aM69h0BoDNAXciYbmXTKfiVtep3naCRea0ByUQbrW8iBC7EyVuhrwwYO4NzslwkP5cMMYf2wRP4_WFd0w8aseI93A2JmDU88iB0zitpwo-FVUlqUueNtbPBd29mwEYSTs7RXxhSS9PeEQC6rgIN5V43R6iArxFwosaRqAhhsrhAeAgC0",
         title: "Stylish dining table",
         subtitle: "Excellent condition",
-        alt: "A dining table in excellent condition"
+        alt: "A dining table in excellent condition",
+        category: "furniture"
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB2Nul0zang-brPiL68f3j0PC1Oqm-fHktid-DB2VQ6XrnP3TNb5r5AcYfj-r5FWyV6O4Vk5qhHvI2fwlo457UqBwuybt5iXjA50tjYHMOxyOyWxCgbRUU1vK-P2zzXWOLB2SjeA3gFp0mfVwTQpMruQdATs6iOTY0w7e0i0XmkNvlKKXEsn_Z4ONOPKGJQ2uhdtIHvK5DSTcD6v22XpAZIqH9eUOhlAd-giwY68lP1dXMMzSbVQcCtDZuJJXz_flfd5Y6jeu5uiJM",
         title: "Comfortable Armchair",
         subtitle: "Fairly Used",
-        alt: "A fairly used armchair"
+        alt: "A fairly used armchair",
+        category: "furniture"
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxlQOFxWTkQ5q5xwEpAqxesf-BTrI7dC5vG2bjN4t0Ud-G2FnAuzzdTvOWkC-9JXz0Exy_mh3o3OCXAiQmNkVbCp5maY1opDNhlPUIkmfG3jtbXL7a8RTRZr9Q6uuidQK2rsaxt9q7c7_sYyQVhEAtCULXLN5Ja7-Awn21jeMgI_f8rTJB9dxoM4ZRL9sFo1zLosxOXYG0mHUjR3bPOwUlQijNHDQ8M5hYeeuiu_R5jNvHTHt8LlUDfsO97yG759ibzrkq89nuyc4",
         title: "Elegant Coffee Table",
         subtitle: "Moderately Used",
-        alt: "An elegant coffee table in moderately used condition"
+        alt: "An elegant coffee table in moderately used condition",
+        category: "furniture"
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9MGeGn5M47SEIl3Nic1JLTcYDKqLqYm9xfkVXMkpNmvT7eJgbHbWF6Dq1GAiI6KyIfO5C6WWaqgy5AaGdYfA3K0ZXpWDcMp8LFUgc1UvvHOJD4KIXYmsgl5VlN6InrER0xOTx0kuEWzUYgw6sw0MG0LRPFJ6upr-CNSTn4kMhTePxnBxwJAVGPT1O1eOrXWQvFistslzW8JCfvcHQbsEncmB-YcXkW2yjxR7p6Cqow50WVG_jz5cKz9AaZc9Ei9t4DEXWEVgex-Q",
         title: "Xbox Series X Slim",
         subtitle: "Near Mint condition",
-        alt: "An Xbox Series X Slim in near mint condition"
+        alt: "An Xbox Series X Slim in near mint condition",
+        category: "technology"
     }
 ]
 
@@ -35,22 +40,26 @@ export const Categories = [
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDkbr3ST56iecNTIklNtcTYhH0bc3NYDxIkhySvps9GH8tv-akUYeExpWjEAbwifATB46OfIBlXYDjwy2OcGL66k4Ng8nuo8hM6IRDu-f4vhHvFZKSYxeEL4BxQercrWcfif99cOoVHDR-cQwVDvIeyiwv5CACZbDdr-AQLXjmDoaoLHG7asefShrAbon2r5aEmbmlll-7xCVzVHZ511PuOLUvKU_ofvDiZ-RKpTtznuj_X4XV02eIBhRXWpI5eHIOyU_HVWoNWmvQ",
         title: "Tech",
-        alt: "Technology"
+        alt: "Technology",
+        category: "technology"
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAmztFsUiXVgDYsdSAJVT1t9ifk9noNp2H0AF88NXgtRE5wLx4hiUiqN-uj3QOGf2FKM5H1zlCc_JbFtGzytFn-Omqq2qNw8FfzE-pMyazDoiDj2whZZ22pK3GpgOVr5_w_8UDqW4sQFjVDQ5kNJ5bVxOmlcg2QCGCYgzxgFln5gjjZKsrw9-UcECro5fs7ylv_Jxc8sUw0eDjE0lDMAQd-fD5hNVcVIHMoKOEPm_E8kZlqzkq_eCH5nnPsral2vwf7T9-uKWMLfI0",
         title: "Furniture",
-        alt: "Furniture"
+        alt: "Furniture",
+        category: "furniture"
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCCuFy_CMQq5PQaA4QH4lgYj7rPWlaQ3sw5NDIjUa-GK0RvlZLuws35ehXblUMqX6bfFBiUixk5pB1LuLG3qNgN462NAuG4BOt7dV1nQtcA3KSHnUZr5iXKLklkOFdUkhyUb3rYGjL-6TZPVRZcgPXBVd5QIvgceL0TPxeqyKoCQBtYajAkxzILidPLPLRwFsPWJzuRbJis_6aGLufkS8xctLOY9i5eHtyxmOZ6dhflP2qubuXa1i1IKFK72egd5Pg90NyxH3aZ8uc",
         title: "Vehicles",
-        alt: "Automobiles"
+        alt: "Automobiles",
+        category: "vehicles"
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_DHxt4k-sNEEZnHqdJnWxOnznSWu8F2spEKKDRClR3yg9kIc4-lWnYRDtAFVjTo7eSuOIwAtYx_izYfmgwRI8tx1xP_lxtrj8_RLjj3hJY39AvEZ5qv8LkRaVNj6eGqvynydQo9SGanRfN7siGaEqrmA6hz4DIF5N5YaVdUL27X_8lMjBb7gQr6RP_v-27Ggxaqvx48K6EYMv9DRIgSvI-1zp77z6wfnRIm_rkwgwdoEKgzGoD5jUlnZWM0iSnmi3wiJvtKjIf5o",
         title: "Clothing",
-        alt: "Clothing and Apparel"
+        alt: "Clothing and Apparel",
+        category: "clothing"
     },
 ]
 

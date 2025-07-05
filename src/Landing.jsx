@@ -2,11 +2,12 @@ import Card from "./components/Card";
 import { Items, Categories, Testimonials, choiceCards } from "./components/data";
 import FeaturesCard from "./components/FeaturesCard"
 import Footer from "./components/Footer";
+import { useNavigate } from "react-router";
 
 export default function Landing() {
   const imgUrl =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuB9TxmopJZytwUCJUiPSVwGKGBUN35kGNQ9nTZ0QCeZL2GDs-8Rm3yuwK9uTiy1XM2fchfQRrWc_28tvjaxB82rPJ0qAclVCUGCim3nOcto0bvjw4ddwkcOHyuE08I_M0EFS9GLACaBCU1aOBpzcRhbMYiy65p5LrUJvFaCdMvamZs1SfS--T3c2r5uGwUuaGavDQskVvMFF2-OBJP7zkLJ6OqibgfRKky4uGBX4VNuqN98c45P7efWhYXijdbNyHwfIUvzuR7Hsn8";
-    console.log(choiceCards[0].icon)
+    const nav = useNavigate();
   return (
     <div className="w-screen max-w-full h-screen">
       <div className="flex flex-col items-center h-full">
@@ -26,6 +27,7 @@ export default function Landing() {
                   image={item.image}
                   title={item.title}
                   subtitle={item.subtitle}
+                  onClick={() => nav(`/categories/${item.category}/${index}`)}
                 />
               ))}
             </div>
