@@ -27,7 +27,7 @@ export default function Landing() {
                   image={item.image}
                   title={item.title}
                   subtitle={item.subtitle}
-                  onClick={() => nav(`/categories/${item.category}/${index}`)}
+                  onClick={() => nav(`/categories/${item.category}/${item.item}`)}
                 />
               ))}
             </div>

@@ -4,7 +4,8 @@ export const Items = [
         title: "Modern Sofa",
         subtitle: "Fairly New",
         alt: "A fairly new modern sofa",
-        category: "furniture"
+        category: "furniture",
+        item: "sofa"
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTuYLpYDeWXm_nPtLwEi4xCVEuRneAPsOww1zIqRN4P1PUrkWKXtf-05juLp_0Un3AEPG3gf1AzVLHxyMO09mZyaW_Qf7aM69h0BoDNAXciYbmXTKfiVtep3naCRea0ByUQbrW8iBC7EyVuhrwwYO4NzslwkP5cMMYf2wRP4_WFd0w8aseI93A2JmDU88iB0zitpwo-FVUlqUueNtbPBd29mwEYSTs7RXxhSS9PeEQC6rgIN5V43R6iArxFwosaRqAhhsrhAeAgC0",
