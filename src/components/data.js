@@ -5,35 +5,48 @@ export const Items = [
         subtitle: "Fairly New",
         alt: "A fairly new modern sofa",
         category: "furniture",
-        item: "sofa"
+        description: "A stylish and comfortable modern sofa in fairly new condition, perfect for any living room.",
+        item: "sofa",
+        additionalViews: [
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuADL2oLeHf9lpVkg06buPZr45rXMHSAHlfVLrAGriVStxdRRBWN8X10P38DT1PlJP2kED14XUG2TKonX8Rhv_zx1Frb8bOCD74WYdUjWnxhKqcvfo7SxfQR2qcfvs-9TfTja0Lz-9YjSO8XUfsIWYUWBxBbImFZBAYmvW4jCMIhK1yszdBO5svaId29PnjS6bTGpks-YISdUFBWLwBjISDfTz2FO7NH1VyeOkx8c34NCvoTXBZFDzibVS6AwNNwfz-Aa0e3H8DlKQE",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuAbhcg5pyscN6oRixezNBmdN29eXvYUCJZQi5QjnUXENt8iCOJq5L16yi-6SZufq93Rg4xBsb8_yS6mo7Hgu5Gn0lLh-tF-WtMFPVSOlejtraUwcJzEwsDpTAMBjCFi2QhmxVuYmwdMuj9ka7g_tB-QJ524gh2CeMYestwBVpNjCTD2bqRZzxEyG3gVQB_116qzF3oFg-jIMIp-3YUvSqQRy0572OEgXcv-1cgtu_L0zEgLhEd_t4Vw3L81W55ZR1Yf2x0REL6in7Y",
+            "https://lh3.googleusercontent.com/aida-public/AB6AXuBO1m106AX1ceYHafM_uvRXTNcD4l5CJuDHbFnS52Tqzt1NoCvFXC6eKOPeKMNJfkEeWe4otm9TvjgGAiMod5TrO5R1RPf_-zZae10cWsxB_gnfpktY8rySs0pgK00IILLE_YN1fVN2mc24badXKDDp84JKOD1hGSi4qk3EayurkvPpyRWGcGYWEenIrLbX9KX00UnxjdQLZX7tDeRp87Sum67cNipEq_t7cERnNdkpjM7eapj0x_aDlYA3DxPq9gBBCKFEGQkRzvE"
+        ],
+        tradeOptions: ["Chair", "TV"],
+        price: 650
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTuYLpYDeWXm_nPtLwEi4xCVEuRneAPsOww1zIqRN4P1PUrkWKXtf-05juLp_0Un3AEPG3gf1AzVLHxyMO09mZyaW_Qf7aM69h0BoDNAXciYbmXTKfiVtep3naCRea0ByUQbrW8iBC7EyVuhrwwYO4NzslwkP5cMMYf2wRP4_WFd0w8aseI93A2JmDU88iB0zitpwo-FVUlqUueNtbPBd29mwEYSTs7RXxhSS9PeEQC6rgIN5V43R6iArxFwosaRqAhhsrhAeAgC0",
         title: "Stylish dining table",
         subtitle: "Excellent condition",
         alt: "A dining table in excellent condition",
-        category: "furniture"
+        category: "furniture",
+        price:950
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB2Nul0zang-brPiL68f3j0PC1Oqm-fHktid-DB2VQ6XrnP3TNb5r5AcYfj-r5FWyV6O4Vk5qhHvI2fwlo457UqBwuybt5iXjA50tjYHMOxyOyWxCgbRUU1vK-P2zzXWOLB2SjeA3gFp0mfVwTQpMruQdATs6iOTY0w7e0i0XmkNvlKKXEsn_Z4ONOPKGJQ2uhdtIHvK5DSTcD6v22XpAZIqH9eUOhlAd-giwY68lP1dXMMzSbVQcCtDZuJJXz_flfd5Y6jeu5uiJM",
         title: "Comfortable Armchair",
         subtitle: "Fairly Used",
         alt: "A fairly used armchair",
-        category: "furniture"
+        category: "furniture",
+        price: 429
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxlQOFxWTkQ5q5xwEpAqxesf-BTrI7dC5vG2bjN4t0Ud-G2FnAuzzdTvOWkC-9JXz0Exy_mh3o3OCXAiQmNkVbCp5maY1opDNhlPUIkmfG3jtbXL7a8RTRZr9Q6uuidQK2rsaxt9q7c7_sYyQVhEAtCULXLN5Ja7-Awn21jeMgI_f8rTJB9dxoM4ZRL9sFo1zLosxOXYG0mHUjR3bPOwUlQijNHDQ8M5hYeeuiu_R5jNvHTHt8LlUDfsO97yG759ibzrkq89nuyc4",
         title: "Elegant Coffee Table",
         subtitle: "Moderately Used",
         alt: "An elegant coffee table in moderately used condition",
-        category: "furniture"
+        category: "furniture",
+        price: 320.46
     },
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9MGeGn5M47SEIl3Nic1JLTcYDKqLqYm9xfkVXMkpNmvT7eJgbHbWF6Dq1GAiI6KyIfO5C6WWaqgy5AaGdYfA3K0ZXpWDcMp8LFUgc1UvvHOJD4KIXYmsgl5VlN6InrER0xOTx0kuEWzUYgw6sw0MG0LRPFJ6upr-CNSTn4kMhTePxnBxwJAVGPT1O1eOrXWQvFistslzW8JCfvcHQbsEncmB-YcXkW2yjxR7p6Cqow50WVG_jz5cKz9AaZc9Ei9t4DEXWEVgex-Q",
         title: "Xbox Series X Slim",
         subtitle: "Near Mint condition",
         alt: "An Xbox Series X Slim in near mint condition",
-        category: "technology"
+        category: "technology",
+        item: "xboxconsole",
+        price:722
     }
 ]
 

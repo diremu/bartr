@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Helper functions for session storage
 const saveToStorage = (key, data) => {
   sessionStorage.setItem(key, JSON.stringify(data));
 };
@@ -11,18 +10,18 @@ const getFromStorage = (key) => {
 };
 
 const getUsersFromStorage = () => {
-  return getFromStorage('bartr_users') || [];
+  return getFromStorage('users') || [];
 };
 
 const getCurrentUser = () => {
-  return getFromStorage('bartr_current_user');
+  return getFromStorage('currentUser');
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState: {
     user: getCurrentUser(),
-    isAuthenticated: !!getCurrentUser(),
+    isAuthenticated: getCurrentUser(),
     users: getUsersFromStorage(),
     loginError: null,
     signupError: null,
@@ -39,8 +38,7 @@ export const userSlice = createSlice({
       state.isAuthenticated = true;
       state.loginLoading = false;
       state.loginError = null;
-      // Save current user to session storage
-      saveToStorage('bartr_current_user', action.payload);
+      saveToStorage('currentUser', action.payload);
     },
     loginFailure: (state, action) => {
       state.loginLoading = false;
@@ -58,10 +56,9 @@ export const userSlice = createSlice({
       state.isAuthenticated = true;
       state.signupLoading = false;
       state.signupError = null;
-      // Add user to users array and save to storage
       state.users.push(userDetails);
-      saveToStorage('bartr_users', state.users);
-      saveToStorage('bartr_current_user', userDetails);
+      saveToStorage('users', state.users);
+      saveToStorage('currentUser', userDetails);
     },
     signupFailure: (state, action) => {
       state.signupLoading = false;
@@ -72,18 +69,15 @@ export const userSlice = createSlice({
       state.isAuthenticated = false;
       state.loginError = null;
       state.signupError = null;
-      // Clear current user from session storage
-      sessionStorage.removeItem('bartr_current_user');
+      sessionStorage.removeItem('currentUser');
     },
     clearErrors: (state) => {
       state.loginError = null;
       state.signupError = null;
     },
-    // Validation and authentication logic
     attemptLogin: (state, action) => {
       const { email, password } = action.payload;
       
-      // Validate input
       if (!email || !password) {
         state.loginError = "Email and password are required";
         return;
@@ -94,7 +88,6 @@ export const userSlice = createSlice({
         return;
       }
       
-      // Find user in storage
       const users = getUsersFromStorage();
       const user = users.find(u => u.email === email);
       
@@ -108,16 +101,14 @@ export const userSlice = createSlice({
         return;
       }
       
-      // Login successful
       state.user = user;
       state.isAuthenticated = true;
       state.loginError = null;
-      saveToStorage('bartr_current_user', user);
+      saveToStorage('currentUser', user);
     },
     attemptSignup: (state, action) => {
       const { firstName, lastName, email, password } = action.payload;
       
-      // Validate input
       if (!firstName || !lastName || !email || !password) {
         state.signupError = "All fields are required";
         return;
@@ -133,16 +124,14 @@ export const userSlice = createSlice({
         return;
       }
       
-      // Check if user already exists
       const users = getUsersFromStorage();
-      const existingUser = users.find(u => u.email === email);
+      const existingUser = users.find(user => user.email === email);
       
       if (existingUser) {
         state.signupError = "An account with this email already exists";
         return;
       }
       
-      // Create new user
       const newUser = {
         id: Date.now().toString(),
         firstName,
@@ -152,13 +141,12 @@ export const userSlice = createSlice({
         createdAt: new Date().toISOString()
       };
       
-      // Signup successful
       state.user = newUser;
       state.isAuthenticated = true;
       state.signupError = null;
       state.users.push(newUser);
-      saveToStorage('bartr_users', state.users);
-      saveToStorage('bartr_current_user', newUser);
+      saveToStorage('users', state.users);
+      saveToStorage('currentUser', newUser);
     },
   },
 });
