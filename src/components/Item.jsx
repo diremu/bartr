@@ -1,8 +1,10 @@
 import { useParams } from "react-router";
 import { Items } from "./data.js";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useRef } from "react";
+import { beginUpload } from "../uploadSlice.js";
 
 const Item = () => {
   const { category, item } = useParams();
@@ -14,8 +16,14 @@ const Item = () => {
       similarItem.category === category && similarItem.item !== item
   );
   const user = useSelector((state) => state.user.isAuthenticated);
+  const uploadError = useSelector((state) => state.upload.uploadError);
   const [visible, setVisible] = useState(false);
+  const [currentUpload, setCurrentUpload] = useState([]);
+  const productImages = useSelector(state => state.upload.currentUpload)
   const navigate = useNavigate();
+  const uploadRef = useRef(null);
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
 
   const changeVisibility = () => {
     if (visible == false) {
@@ -34,13 +42,69 @@ const Item = () => {
           onClick={() => setVisible(false)}
         >
           <div
-            className="border-[1px] border-black h-[30%] bg-gray-300 rounded-sm p-4 left-[25%] right-[25%] absolute"
+            className={`border-[1px] border-black  rounded-sm p-4  absolute ${
+              user
+                ? "bg-gray-200 h-[80%] w-[60%] left-[20%] right-[20%]"
+                : "bg-gray-300 h-[30%] left-[25%] right-[25%]"
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* use conditional styles for when logged in */}
             {user ? (
               <div>
-                <p>Upload documents</p>
+                <h3 className="text-2xl font-bold mb-4 mt-2">Make an Offer</h3>
+                <form>
+                  <p className="text-[18px] mb-2 border-b-gray-900 pb-2 border-b-[0.6px]">What items do you want to trade?</p>
+                  {/* add some fields for item description, title, image and currentuser */}
+                  <div className="my-4 mx-2">
+                    <div className=" flex flex-col gap-3">
+                      <div >
+                        <label htmlFor="title" className="text-[17px]">What is the item?</label>
+                        <input type="text" id="title" className="block bg-white rounded-md px-4 py-2 border-black w-[75%]  hover:outline-0 my-3 mx-2 focus:outline-0" onChange={(e) => setTitle(e.target.value)} value={title}/>
+                      </div>
+                    
+                      <label htmlFor="upload" className="text-[18px] font-semibold block mb-2">Upload Images</label>
+                      <div className="relative w-full">
+                        <input
+                          type="file"
+                          id="upload"
+                          accept="image/*"
+                          multiple
+                          onChange={e => setCurrentUpload(Array.from(e.target.files))}
+                          ref={uploadRef}
+                          className="block w-full text-gray-900 rounded-lg cursor-pointer border border-gray-300 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition"
+                        />
+                        <div>
+
+                        </div>
+                        <div className="flex justify-between mt-2">
+                          <span onClick={() => {
+                            setCurrentUpload(null)
+                            if (uploadRef.current) {
+                              uploadRef.current.value = ""
+                            }
+                          }}>Remove</span>
+                          <span onClick={() => {
+                            dispatch(beginUpload({ file: currentUpload}))
+                          }}>Upload</span>
+                        </div>
+                        {currentUpload && currentUpload.length > 0 && (
+                          <div className="mt-2 text-sm text-gray-700">
+                            <span className="font-semibold">Picked Images</span>
+                            {currentUpload.map((file, index) => (
+                              <span key={index}>
+                                {file.name}{index < currentUpload.length - 1 ? ', ' : ''}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        { uploadError && (
+                          <div className="text-red-500 mt-2">
+                            {uploadError}
+                      </div>)}
+                    </div>
+                  </div>
+                  </div>
+                </form>
               </div>
             ) : (
               <div className="bg-[#c98c088a] h-full w-full">
@@ -50,7 +114,8 @@ const Item = () => {
                 <br />
                 <p className="px-4 text-left">
                   Join a wonderful community where you can trade your items for
-                  others!<br /> Our platform enables trade in a free and fair way for
+                  others!
+                  <br /> Our platform enables trade in a free and fair way for
                   all involved. Join now and don't look back
                 </p>
                 <button

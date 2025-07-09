@@ -14,12 +14,10 @@ const Login = () => {
   const { loginError, loginLoading, isAuthenticated } = useSelector(state => state.user);
 
   useEffect(() => {
-    // Clear errors when component mounts
     dispatch(clearErrors());
   }, [dispatch]);
 
   useEffect(() => {
-    // Redirect to home if already authenticated
     if (isAuthenticated) {
       navigate('/');
     }
