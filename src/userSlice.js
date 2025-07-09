@@ -83,11 +83,6 @@ export const userSlice = createSlice({
         return;
       }
       
-      if (!email.includes('@')) {
-        state.loginError = "Please enter a valid email address";
-        return;
-      }
-      
       const users = getUsersFromStorage();
       const user = users.find(u => u.email === email);
       
@@ -114,16 +109,23 @@ export const userSlice = createSlice({
         return;
       }
       
-      if (!email.includes('@')) {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3}$/;
+      if (!emailRegex.test(email)) {
         state.signupError = "Please enter a valid email address";
         return;
       }
       
-      if (password.length < 6) {
+      const passwordRegex = /^[a-zA-Z][a-zA-Z0-9._%+-]{8,}$/
+
+      if (password.length < 8) {
         state.signupError = "Password must be at least 6 characters long";
         return;
       }
-      
+      if (!passwordRegex.test(password)) {
+        state.signupError = "Password must start with a letter and contain at least 8 characters";
+        return;
+      }
+
       const users = getUsersFromStorage();
       const existingUser = users.find(user => user.email === email);
       

@@ -32,8 +32,19 @@ const Item = () => {
       setVisible(false);
     }
   };
-  // console.log(document.getElementById("eventDiv"))
 
+  const convertBeforeUpload = (e) => {
+    const numberOfFiles = e.target.files.length;
+    const file = e.target.files[numberOfFiles - 1];
+    if (file) {
+      const imageView = URL.createObjectURL(file);
+      setCurrentUpload([...currentUpload, imageView]);
+      console.log(currentUpload);
+      // if (uploadRef.current) {
+      //   uploadRef.current.value = "";
+      // }
+    }
+  }
   return (
     <div className="lg:mx-[10vw] my-6 h-full w-[80%] relative" id="eventDiv">
       {visible ? (
@@ -69,7 +80,7 @@ const Item = () => {
                           id="upload"
                           accept="image/*"
                           multiple
-                          onChange={e => setCurrentUpload(Array.from(e.target.files))}
+                          onChange={convertBeforeUpload}
                           ref={uploadRef}
                           className="block w-full text-gray-900 rounded-lg cursor-pointer border border-gray-300 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition"
                         />
@@ -107,19 +118,19 @@ const Item = () => {
                 </form>
               </div>
             ) : (
-              <div className="bg-[#c98c088a] h-full w-full">
+              <div className="bg-[#41cee78a] h-full w-full">
                 <h4 className="text-[22px] font-semibold text-center py-3">
                   You need to log in to trade here
                 </h4>
                 <br />
-                <p className="px-4 text-left">
+                <p className="px-4 text-center text-[16px]">
                   Join a wonderful community where you can trade your items for
                   others!
                   <br /> Our platform enables trade in a free and fair way for
                   all involved. Join now and don't look back
                 </p>
                 <button
-                  className="block mx-auto my-6"
+                  className="block mx-auto my-6 px-3 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
                   onClick={() => navigate("/signup")}
                 >
                   Join Us

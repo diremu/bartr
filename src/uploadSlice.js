@@ -21,7 +21,7 @@ const uploadSlice = createSlice({
             if (action.payload.files && action.payload.files.length > 0) {
                 const newFiles = Array.from(action.payload.files).map(file => ({ name: file.name }));
                 state.currentUpload = [...state.currentUpload, ...newFiles];
-                console.log("Files to upload:", state.currentUpload);
+                console.log( state.currentUpload);
                 state.uploadError = null;
             } else {
                 state.uploadError = "No file(s) selected for upload";
@@ -37,7 +37,7 @@ const uploadSlice = createSlice({
             if (state.currentUpload && state.currentUpload.length > 0 && state.currentUpload.length < 4) {
                 const newUploads = state.currentUpload.map(img => ({
                     ...img,
-                    id: Date.now().toString() + Math.random().toString(36).slice(2),
+                    id: Date.now().toString(10),
                     user: action.payload.user,
                 }));
                 state.uploads.push(...newUploads);
