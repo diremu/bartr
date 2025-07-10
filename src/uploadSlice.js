@@ -18,14 +18,14 @@ const uploadSlice = createSlice({
     },
     reducers: {
         beginUpload: (state, action) => {
-            if (action.payload.files && action.payload.files.length > 0) {
-                const newFiles = Array.from(action.payload.files).map(file => ({ name: file.name }));
+            if (action.payload.file) {
+                const newFiles = action.payload.uploadFiles
                 state.currentUpload = [...state.currentUpload, ...newFiles];
                 console.log( state.currentUpload);
                 state.uploadError = null;
             } else {
-                state.uploadError = "No file(s) selected for upload";
-                console.error("No file(s) provided");
+                state.uploadError = "No file has been selected for upload";
+                console.error("No file provided");
             }
         },
         removeUpload: (state, action) => {

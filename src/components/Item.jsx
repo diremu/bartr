@@ -1,10 +1,9 @@
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { Items } from "./data.js";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { useNavigate } from "react-router";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { beginUpload } from "../uploadSlice.js";
+import { current } from "@reduxjs/toolkit";
 
 const Item = () => {
   const { category, item } = useParams();
@@ -19,11 +18,13 @@ const Item = () => {
   const uploadError = useSelector((state) => state.upload.uploadError);
   const [visible, setVisible] = useState(false);
   const [currentUpload, setCurrentUpload] = useState([]);
-  const productImages = useSelector(state => state.upload.currentUpload)
+  const productImages = useSelector((state) => state.upload.currentUpload);
   const navigate = useNavigate();
   const uploadRef = useRef(null);
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [names, setNames] = useState([]);
 
   const changeVisibility = () => {
     if (visible == false) {
@@ -34,17 +35,22 @@ const Item = () => {
   };
 
   const convertBeforeUpload = (e) => {
-    const numberOfFiles = e.target.files.length;
-    const file = e.target.files[numberOfFiles - 1];
+    const file = e.target.files[0];
+    console.log(file);
     if (file) {
       const imageView = URL.createObjectURL(file);
+      setNames([...names, file.name]);
+      console.log("File name:" + file.name);
       setCurrentUpload([...currentUpload, imageView]);
+      // dispatch(beginUpload({uploadFiles: [...currentUpload]}))
+      console.log(imageView);
       console.log(currentUpload);
+      console.log(names);
       // if (uploadRef.current) {
       //   uploadRef.current.value = "";
       // }
     }
-  }
+  };
   return (
     <div className="lg:mx-[10vw] my-6 h-full w-[80%] relative" id="eventDiv">
       {visible ? (
@@ -55,7 +61,7 @@ const Item = () => {
           <div
             className={`border-[1px] border-black  rounded-sm p-4  absolute ${
               user
-                ? "bg-gray-200 h-[80%] w-[60%] left-[20%] right-[20%]"
+                ? "bg-gray-200 h-max w-[60%] left-[20%] right-[20%]"
                 : "bg-gray-300 h-[30%] left-[25%] right-[25%]"
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -64,56 +70,90 @@ const Item = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-4 mt-2">Make an Offer</h3>
                 <form>
-                  <p className="text-[18px] mb-2 border-b-gray-900 pb-2 border-b-[0.6px]">What items do you want to trade?</p>
-                  {/* add some fields for item description, title, image and currentuser */}
+                  <p className="text-[18px] mb-2 border-b-gray-900 pb-2 border-b-[0.6px]">
+                    What items do you want to trade?
+                  </p>
                   <div className="my-4 mx-2">
                     <div className=" flex flex-col gap-3">
-                      <div >
-                        <label htmlFor="title" className="text-[17px]">What is the item?</label>
-                        <input type="text" id="title" className="block bg-white rounded-md px-4 py-2 border-black w-[75%]  hover:outline-0 my-3 mx-2 focus:outline-0" onChange={(e) => setTitle(e.target.value)} value={title}/>
+                      <div>
+                        <label htmlFor="title" className="text-[17px]">
+                          What is the item?
+                        </label>
+                        <input
+                          type="text"
+                          id="title"
+                          className="block bg-white rounded-md px-4 py-2 border-black w-[75%]  hover:outline-0 my-3 mx-2 focus:outline-0"
+                          onChange={(e) => setTitle(e.target.value)}
+                          value={title}
+                        />
                       </div>
-                    
-                      <label htmlFor="upload" className="text-[18px] font-semibold block mb-2">Upload Images</label>
+
+                      <label
+                        htmlFor="upload"
+                        className="text-[18px] font-semibold block mb-2"
+                      >
+                        Upload Images
+                      </label>
                       <div className="relative w-full">
                         <input
                           type="file"
                           id="upload"
                           accept="image/*"
-                          multiple
                           onChange={convertBeforeUpload}
                           ref={uploadRef}
                           className="block w-full text-gray-900 rounded-lg cursor-pointer border border-gray-300 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition"
                         />
-                        <div>
-
-                        </div>
+                        <div></div>
                         <div className="flex justify-between mt-2">
-                          <span onClick={() => {
-                            setCurrentUpload(null)
-                            if (uploadRef.current) {
-                              uploadRef.current.value = ""
-                            }
-                          }}>Remove</span>
-                          <span onClick={() => {
-                            dispatch(beginUpload({ file: currentUpload}))
-                          }}>Upload</span>
+                          <span
+                            onClick={() => {
+                              setNames([]);
+                              setCurrentUpload([]);
+                              if (uploadRef.current) {
+                                uploadRef.current.value = "";
+                              }
+                            }}
+                          >
+                            Remove
+                          </span>
+                          <span
+                            onClick={() => {
+                              dispatch(beginUpload({ file: currentUpload }));
+                            }}
+                          >
+                            Upload
+                          </span>
                         </div>
                         {currentUpload && currentUpload.length > 0 && (
                           <div className="mt-2 text-sm text-gray-700">
-                            <span className="font-semibold">Picked Images</span>
-                            {currentUpload.map((file, index) => (
-                              <span key={index}>
-                                {file.name}{index < currentUpload.length - 1 ? ', ' : ''}
-                              </span>
-                            ))}
+                            <span className="font-semibold mr-4">
+                              Picked Images
+                            </span>
+                            <div className="mb-4 wrap-normal">
+                              {currentUpload.map((file, index) => (
+                                <span key={index}>
+                                  {names[index]}
+                                  {index < currentUpload.length - 1 ? ", " : ""}
+                                </span>
+                              ))}
+                            </div>
+                            <div className="flex w-fit gap-4 flex-wrap">
+                              {currentUpload.map((file, index) => (
+                                <img
+                                  src={currentUpload[index]}
+                                  key={index}
+                                  className="h-[100px] w-[150px] aspect-square"
+                                  alt={`${names[index]}`}
+                                />
+                              ))}
+                            </div>
                           </div>
                         )}
-                        { uploadError && (
-                          <div className="text-red-500 mt-2">
-                            {uploadError}
-                      </div>)}
+                        {uploadError && (
+                          <div className="text-red-500 mt-2">{uploadError}</div>
+                        )}
+                      </div>
                     </div>
-                  </div>
                   </div>
                 </form>
               </div>

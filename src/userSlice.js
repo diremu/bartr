@@ -118,7 +118,7 @@ export const userSlice = createSlice({
       const passwordRegex = /^[a-zA-Z][a-zA-Z0-9._%+-]{8,}$/
 
       if (password.length < 8) {
-        state.signupError = "Password must be at least 6 characters long";
+        state.signupError = "Password must be at least 8 characters long";
         return;
       }
       if (!passwordRegex.test(password)) {
