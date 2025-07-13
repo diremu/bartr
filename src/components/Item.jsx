@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router";
 import { Items } from "./data.js";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useRef } from "react";
-import { beginUpload } from "../uploadSlice.js";
+import { beginUpload, completeUpload } from "../uploadSlice.js";
 import { current } from "@reduxjs/toolkit";
 
 const Item = () => {
@@ -15,6 +15,7 @@ const Item = () => {
       similarItem.category === category && similarItem.item !== item
   );
   const user = useSelector((state) => state.user.isAuthenticated);
+  const currentUser = useSelector((state) => state.user.user);
   const uploadError = useSelector((state) => state.upload.uploadError);
   const [visible, setVisible] = useState(false);
   const [currentUpload, setCurrentUpload] = useState([]);
@@ -25,6 +26,7 @@ const Item = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [names, setNames] = useState([]);
+  const userEmail = useSelector((state) => state.user.user.email);
 
   const changeVisibility = () => {
     if (visible == false) {
@@ -51,6 +53,34 @@ const Item = () => {
       // }
     }
   };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (title == "" || (title.trim() == "") ) {
+      alert("Please enter a title for your item");
+    } else if (description == "") {
+      alert("Please select a condition for your item");
+    } else if (currentUpload.length === 0) {
+      alert("Please upload at least one image for your item");
+    } else {
+      dispatch(
+        completeUpload({
+          file: currentUpload,
+          user: currentUser,
+          title: title,
+          description: description,
+          email: userEmail
+        })
+      );
+      setVisible(false);
+      setCurrentUpload([]);
+      setNames([]);
+      if (uploadRef.current) {
+        uploadRef.current.value = "";
+      }
+      setTitle("");
+      setDescription("");
+  }}
   return (
     <div className="lg:mx-[10vw] my-6 h-full w-[80%] relative" id="eventDiv">
       {visible ? (
@@ -62,14 +92,14 @@ const Item = () => {
             className={`border-[1px] border-black  rounded-sm p-4  absolute ${
               user
                 ? "bg-gray-200 h-max w-[60%] left-[20%] right-[20%]"
-                : "bg-gray-300 h-[30%] left-[25%] right-[25%]"
+                : "bg-gray-300 h-[40%] left-[25%] right-[25%]"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
             {user ? (
               <div>
                 <h3 className="text-2xl font-bold mb-4 mt-2">Make an Offer</h3>
-                <form>
+                <form onSubmit={onSubmit}>
                   <p className="text-[18px] mb-2 border-b-gray-900 pb-2 border-b-[0.6px]">
                     What items do you want to trade?
                   </p>
@@ -86,6 +116,17 @@ const Item = () => {
                           onChange={(e) => setTitle(e.target.value)}
                           value={title}
                         />
+                      </div>
+                      <div>
+                        <label htmlFor="description" className="text-[17px]">
+                          What's the condition of the item?
+                        </label>
+                        <select id="description" onChange={(e) => setDescription(e.target.value)} className="block bg-white rounded-md px-4 py-2 border-black w-[75%]  hover:outline-0 my-3 mx-2 focus:outline-0">
+                          <option value="new">New</option>
+                          <option value="fairlyused">Fairly Used</option>
+                          <option value="moderatelyused">Moderately Used</option>
+                          <option value="heavilyused">Heavily Used/ Worn Out</option>
+                        </select>
                       </div>
 
                       <label
@@ -252,4 +293,4 @@ const Item = () => {
   );
 };
 
-export default Item;
+export default Item

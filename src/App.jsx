@@ -6,9 +6,13 @@ import Categories from "./components/Categories.jsx";
 import Navbar from "./components/Navbar.jsx";
 import AuthNavbar from "./components/AuthNavbar.jsx";
 import Item from "./components/Item.jsx";
+import  UserNavbar  from "./components/userNavbar.jsx";
+import UserDashboard from "./components/userDashboard.jsx";
+import { useSelector } from "react-redux";
 import "./App.css";
 
 function App() {
+  const authenticated = useSelector((state) => state.user.isAuthenticated);
   return (
     <>
       <Routes>
@@ -16,16 +20,24 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Route>
-        <Route element={<Navbar />}>
-          <Route path="/" element={<Landing />} />
-          <Route path="/categories">
-            <Route path=":category" element={<Categories />} />
-            <Route
-              path=":category/:item"
-              element={<Item />}
-            />
+        {!authenticated ? (
+          <Route element={<Navbar />}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/categories">
+              <Route path=":category" element={<Categories />} />
+              <Route path=":category/:item" element={<Item />} />
+            </Route>
           </Route>
-        </Route>
+        ) : (
+          <Route element={<UserNavbar />}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/categories">
+              <Route path=":category" element={<Categories />} />
+              <Route path=":category/:item" element={<Item />} />
+            </Route>
+            <Route path="/dashboard" element={<UserDashboard />} />
+          </Route>
+        )}
       </Routes>
     </>
   );

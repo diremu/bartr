@@ -39,6 +39,7 @@ const uploadSlice = createSlice({
                     ...img,
                     id: Date.now().toString(10),
                     user: action.payload.user,
+                    email: action.payload.email,
                 }));
                 state.uploads.push(...newUploads);
                 setUploadsToSession(state.uploads);

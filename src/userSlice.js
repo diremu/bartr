@@ -109,7 +109,7 @@ export const userSlice = createSlice({
         return;
       }
       
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3}$/;
+      const emailRegex = /^[a-zA-Z0-9._%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{3}$/;
       if (!emailRegex.test(email)) {
         state.signupError = "Please enter a valid email address";
         return;
