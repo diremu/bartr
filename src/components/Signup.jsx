@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router';
+import { useNavigate } from 'react-router';
 import { attemptSignup, clearErrors } from '../userSlice';
 
 const Signup = () => {
