@@ -1,13 +1,16 @@
 import { useParams, useNavigate } from "react-router";
 import { Items } from "./data.js";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { beginUpload, completeUpload } from "../uploadSlice.js";
 import { current } from "@reduxjs/toolkit";
 
 const Item = () => {
   const { category, item } = useParams();
-  const product = Items[0];
+  const product = Items.find(
+    (productItem) =>
+      productItem.category === category && productItem.item === item
+  );
   const images = product.additionalViews;
   const options = product.tradeOptions;
   const similar = Items.filter(
@@ -26,39 +29,32 @@ const Item = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [names, setNames] = useState([]);
-  const userEmail = useSelector((state) => state.user.user.email);
+  const userEmail = useSelector((state) => state.user?.user?.email);
 
   const changeVisibility = () => {
-    if (visible == false) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
+    setVisible(!visible);
   };
 
-  const convertBeforeUpload = (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    if (file) {
-      const imageView = URL.createObjectURL(file);
-      setNames([...names, file.name]);
-      console.log("File name:" + file.name);
-      setCurrentUpload([...currentUpload, imageView]);
-      // dispatch(beginUpload({uploadFiles: [...currentUpload]}))
-      console.log(imageView);
-      console.log(currentUpload);
-      console.log(names);
-      // if (uploadRef.current) {
-      //   uploadRef.current.value = "";
-      // }
-    }
-  };
+  useEffect(() => {
+  if (currentUpload.length > 0) {
+    dispatch(beginUpload({ uploadFiles: currentUpload }));
+    console.log("dispatched uploads: ", currentUpload);
+  }
+}, [currentUpload, dispatch]);
 
+const convertBeforeUpload = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const imageView = URL.createObjectURL(file);
+
+  setNames((former) => [...former, file.name]);
+  setCurrentUpload((prev) => [...prev, imageView]);
+};
   const onSubmit = (e) => {
     e.preventDefault();
-    if (title == "" || (title.trim() == "") ) {
+    if (title.trim() === "") {
       alert("Please enter a title for your item");
-    } else if (description == "") {
+    } else if (description === "") {
       alert("Please select a condition for your item");
     } else if (currentUpload.length === 0) {
       alert("Please upload at least one image for your item");
@@ -69,7 +65,7 @@ const Item = () => {
           user: currentUser,
           title: title,
           description: description,
-          email: userEmail
+          email: userEmail,
         })
       );
       setVisible(false);
@@ -80,7 +76,9 @@ const Item = () => {
       }
       setTitle("");
       setDescription("");
-  }}
+    }
+  };
+
   return (
     <div className="lg:mx-[10vw] my-6 h-full w-[80%] relative" id="eventDiv">
       {visible ? (
@@ -89,7 +87,7 @@ const Item = () => {
           onClick={() => setVisible(false)}
         >
           <div
-            className={`border-[1px] border-black  rounded-sm p-4  absolute ${
+            className={`border-[1px] border-black rounded-sm p-4 absolute ${
               user
                 ? "bg-gray-200 h-max w-[60%] left-[20%] right-[20%]"
                 : "bg-gray-300 h-[40%] left-[25%] right-[25%]"
@@ -104,7 +102,7 @@ const Item = () => {
                     What items do you want to trade?
                   </p>
                   <div className="my-4 mx-2">
-                    <div className=" flex flex-col gap-3">
+                    <div className="flex flex-col gap-3">
                       <div>
                         <label htmlFor="title" className="text-[17px]">
                           What is the item?
@@ -112,7 +110,7 @@ const Item = () => {
                         <input
                           type="text"
                           id="title"
-                          className="block bg-white rounded-md px-4 py-2 border-black w-[75%]  hover:outline-0 my-3 mx-2 focus:outline-0"
+                          className="block bg-white rounded-md px-4 py-2 border-black w-[75%] hover:outline-0 my-3 mx-2 focus:outline-0"
                           onChange={(e) => setTitle(e.target.value)}
                           value={title}
                         />
@@ -121,14 +119,21 @@ const Item = () => {
                         <label htmlFor="description" className="text-[17px]">
                           What's the condition of the item?
                         </label>
-                        <select id="description" onChange={(e) => setDescription(e.target.value)} className="block bg-white rounded-md px-4 py-2 border-black w-[75%]  hover:outline-0 my-3 mx-2 focus:outline-0">
+                        <select
+                          id="description"
+                          onChange={(e) => setDescription(e.target.value)}
+                          className="block bg-white rounded-md px-4 py-2 border-black w-[75%] hover:outline-0 my-3 mx-2 focus:outline-0"
+                        >
                           <option value="new">New</option>
                           <option value="fairlyused">Fairly Used</option>
-                          <option value="moderatelyused">Moderately Used</option>
-                          <option value="heavilyused">Heavily Used/ Worn Out</option>
+                          <option value="moderatelyused">
+                            Moderately Used
+                          </option>
+                          <option value="heavilyused">
+                            Heavily Used/ Worn Out
+                          </option>
                         </select>
                       </div>
-
                       <label
                         htmlFor="upload"
                         className="text-[18px] font-semibold block mb-2"
@@ -157,13 +162,20 @@ const Item = () => {
                           >
                             Remove
                           </span>
-                          <span
+                          <button
+                            type="submit"
                             onClick={() => {
-                              dispatch(beginUpload({ file: currentUpload }));
+                              dispatch(
+                                completeUpload({
+                                  currentUpload: currentUpload,
+                                  user: currentUser,
+                                  email: userEmail,
+                                })
+                              );
                             }}
                           >
                             Upload
-                          </span>
+                          </button>
                         </div>
                         {currentUpload && currentUpload.length > 0 && (
                           <div className="mt-2 text-sm text-gray-700">
@@ -231,7 +243,6 @@ const Item = () => {
         <div className="flex flex-col md:flex-row ">
           <div className="w-[50%]">
             <img className="h-[680px] bg-cover" src={images[0]} />
-            {/* <div className={`bg-url(${image1}) bg-contain`}>a</div> */}
           </div>
           <div className="flex flex-col justify-center">
             <img className="h-[340px] w-[400px]" src={images[1]} />
@@ -278,7 +289,7 @@ const Item = () => {
               {similar.map((item, index) => (
                 <div key={index}>
                   <div className="w-full">
-                    <img src={item.image} className="h-[120px]  rounded-sm" />
+                    <img src={item.image} className="h-[120px] rounded-sm" />
                   </div>
                   <div>
                     <p className="text-[13px] font-semibold">{item.title}</p>
@@ -293,4 +304,4 @@ const Item = () => {
   );
 };
 
-export default Item
+export default Item;

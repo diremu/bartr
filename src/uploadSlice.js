@@ -18,14 +18,16 @@ const uploadSlice = createSlice({
     },
     reducers: {
         beginUpload: (state, action) => {
-            if (action.payload.file) {
+            if (action.payload.uploadFiles && action.payload.uploadFiles.length > 0) {
                 const newFiles = action.payload.uploadFiles
-                state.currentUpload = [...state.currentUpload, ...newFiles];
-                console.log( state.currentUpload);
+                console.log(newFiles);
+                state.currentUpload.push([...newFiles])
                 state.uploadError = null;
+                return ;
             } else {
                 state.uploadError = "No file has been selected for upload";
                 console.error("No file provided");
+                return ;
             }
         },
         removeUpload: (state, action) => {
@@ -43,12 +45,12 @@ const uploadSlice = createSlice({
                 }));
                 state.uploads.push(...newUploads);
                 setUploadsToSession(state.uploads);
+                console.log(newUploads)
+                console.log(action.payload)
                 state.currentUpload = [];
                 state.uploadError = null;
-                console.log("Complete")
             }else if(state.currentUpload.length > 3)  {
                 state.uploadError = "You can only upload up to 3 images for a product"
-
             } else {
                 state.uploadError = "Select picture(s) to upload"
             }

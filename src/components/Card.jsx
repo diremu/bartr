@@ -1,5 +1,4 @@
 const Card = ({ image, title, subtitle, alt, onClick, type = "item" }) => {
-    // type: "item", "category", or "testimony"
     let cardClass = "flex flex-col items-center rounded-2xl bg-white ";
     let imgClass = "object-cover rounded mb-3 ";
     let titleClass = "text-center font-semibold text-left";
@@ -14,7 +13,7 @@ const Card = ({ image, title, subtitle, alt, onClick, type = "item" }) => {
         imgClass += "w-[85%] h-[80%] mb-4 rounded-sm";
         titleClass += "text-[18px] md:text-[19px] lg:text-[20px] text-gray-700 mt-2 text-left";
         subtitleClass += "text-[14px] md:text-[15px] lg:text-[15px] text-gray-500 text-left word-wrap";
-    } else { // item
+    } else {
         cardClass += " w-64 h-64 items-start";
         imgClass += "w-36 h-36 mb-3 rounded-lg";
         titleClass += "text-[14px] text-gray-700 text-left";
