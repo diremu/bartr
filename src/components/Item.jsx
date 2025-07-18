@@ -30,6 +30,7 @@ const Item = () => {
   const [description, setDescription] = useState("");
   const [names, setNames] = useState([]);
   const userEmail = useSelector((state) => state.user?.user?.email);
+  const [formError, setFormError] = useState({description: "", title: "",})
 
   const changeVisibility = () => {
     setVisible(!visible);
@@ -53,9 +54,9 @@ const convertBeforeUpload = (e) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (title.trim() === "") {
-      alert("Please enter a title for your item");
+      setFormError((prev) => ({ ...prev, title: "Please enter a title for your item" }));
     } else if (description === "") {
-      alert("Please select a condition for your item");
+      setFormError((prev) => ({ ...prev, description: "Please select a condition for your item" }));
     } else if (currentUpload.length === 0) {
       alert("Please upload at least one image for your item");
     } else {
@@ -115,6 +116,11 @@ const convertBeforeUpload = (e) => {
                           value={title}
                         />
                       </div>
+                      {formError.title && (
+                        <div className="text-red-500 mt-2">
+                          {formError.title}
+                        </div>
+                      )}
                       <div>
                         <label htmlFor="description" className="text-[17px]">
                           What's the condition of the item?
@@ -123,7 +129,11 @@ const convertBeforeUpload = (e) => {
                           id="description"
                           onChange={(e) => setDescription(e.target.value)}
                           className="block bg-white rounded-md px-4 py-2 border-black w-[75%] hover:outline-0 my-3 mx-2 focus:outline-0"
+                          defaultValue=""
                         >
+                          <option value="" disabled className="text-gray-500">
+                            Select condition
+                            </option>
                           <option value="new">New</option>
                           <option value="fairlyused">Fairly Used</option>
                           <option value="moderatelyused">
@@ -134,6 +144,9 @@ const convertBeforeUpload = (e) => {
                           </option>
                         </select>
                       </div>
+                      {formError.description && (
+                        <div className="text-red-500 mt-2">{formError.description}</div>
+                      )}
                       <label
                         htmlFor="upload"
                         className="text-[18px] font-semibold block mb-2"
@@ -159,6 +172,7 @@ const convertBeforeUpload = (e) => {
                                 uploadRef.current.value = "";
                               }
                             }}
+                            className="my-2 mx-2 px-4 py-2 bg-red-600 text-white rounded-md cursor-pointer"
                           >
                             Remove
                           </span>
@@ -173,6 +187,7 @@ const convertBeforeUpload = (e) => {
                                 })
                               );
                             }}
+                            className="text-white bg-green-600 px-4 py-2 my-2 mx-2 rounded-md"
                           >
                             Upload
                           </button>

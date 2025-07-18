@@ -40,12 +40,12 @@ const uploadSlice = createSlice({
                 const newUploads = state.currentUpload.map(img => ({
                     ...img,
                     id: Date.now().toString(10),
-                    user: action.payload.user,
+                    user: action.payload.user.firstName,
                     email: action.payload.email,
                 }));
-                state.uploads.push(...newUploads);
+                state.uploads = [...state.uploads, ...newUploads]
                 setUploadsToSession(state.uploads);
-                console.log(newUploads)
+                console.log("Uploads completed:", state.uploads);
                 console.log(action.payload)
                 state.currentUpload = [];
                 state.uploadError = null;
