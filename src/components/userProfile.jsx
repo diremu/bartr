@@ -17,7 +17,7 @@ const Profile = () => {
             {fname.charAt(0) + lname.charAt(0)}
           </h1>
         </div>
-        <h3 className="text-xl font-bold ">Name</h3>
+        <h3 className="text-xl font-bold capitalize">{fname + " " + lname}</h3>
         <p className="text-gray-600 text-sm">Joined in {year}</p>
         <button
           className="my-4 py-3 px-4 bg-gray-500 text-white rounded-full font-semibold"
