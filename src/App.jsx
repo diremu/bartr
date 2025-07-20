@@ -8,6 +8,7 @@ import AuthNavbar from "./components/AuthNavbar.jsx";
 import Item from "./components/Item.jsx";
 import  UserNavbar  from "./components/userNavbar.jsx";
 import UserDashboard from "./components/userDashboard.jsx";
+import Profile from "./components/userProfile.jsx";
 import { useSelector } from "react-redux";
 import "./App.css";
 
@@ -36,6 +37,7 @@ function App() {
               <Route path=":category/:item" element={<Item />} />
             </Route>
             <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         )}
       </Routes>

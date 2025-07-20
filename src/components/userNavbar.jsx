@@ -111,7 +111,9 @@ const UserNavbar = () => {
                   className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-lg z-20 py-2"
                 >
                   <div className="px-4 py-2 text-gray-700 font-semibold border-b">
-                    {user?.firstName} {user?.lastName}
+                    <button onClick={() => navigate("/profile")} className="w-full text-left text-green-700">
+                      {user?.firstName} {user?.lastName}
+                    </button>
                   </div>
                   <button
                     className="w-full text-left px-4 py-2 hover:bg-gray-100 font-semibold"
