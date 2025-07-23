@@ -38,10 +38,13 @@ const uploadSlice = createSlice({
         completeUpload: (state, action) => {
             if (state.currentUpload && state.currentUpload.length > 0 && state.currentUpload.length < 4) {
                 const newUploads = state.currentUpload.map(img => ({
-                    ...img,
-                    id: Date.now().toString(10),
+                    image: [...img],
+                    id: Date.now(),
                     user: action.payload.user.firstName,
                     email: action.payload.email,
+                    title: action.payload.title,
+                    status: action.payload.status,
+                    description: action.payload.description
                 }));
                 state.uploads = [...state.uploads, ...newUploads]
                 setUploadsToSession(state.uploads);

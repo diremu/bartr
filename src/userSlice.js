@@ -150,6 +150,21 @@ export const userSlice = createSlice({
       saveToStorage('users', state.users);
       saveToStorage('currentUser', newUser);
     },
+    updateUserInfo: (state, action) => {
+      const selectedUser = state.users.find(user => user.email === action.payload.email);
+      if (action.payload.firstName) {
+        selectedUser.firstName = action.payload.firstName;
+      }
+      if (action.payload.lastName) {
+        selectedUser.lastName = action.payload.lastName;
+      }
+      if (action.payload.password) {
+        selectedUser.password = action.payload.password;
+      }
+      state.user = selectedUser;
+      state.users.splice(state.users.findIndex(user => user.email === selectedUser.email), 1, selectedUser);
+      saveToStorage('users', state.users);
+    }
   },
 });
 
@@ -163,6 +178,7 @@ export const {
   logout, 
   clearErrors,
   attemptLogin,
-  attemptSignup
+  attemptSignup,
+  updateUserInfo
 } = userSlice.actions;
 export default userSlice.reducer;

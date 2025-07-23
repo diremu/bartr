@@ -22,7 +22,6 @@ const Item = () => {
   const uploadError = useSelector((state) => state.upload.uploadError);
   const [visible, setVisible] = useState(false);
   const [currentUpload, setCurrentUpload] = useState([]);
-  const productImages = useSelector((state) => state.upload.currentUpload);
   const navigate = useNavigate();
   const uploadRef = useRef(null);
   const dispatch = useDispatch();
@@ -67,6 +66,7 @@ const convertBeforeUpload = (e) => {
           title: title,
           description: description,
           email: userEmail,
+          status: "pending"
         })
       );
       setVisible(false);
@@ -178,15 +178,7 @@ const convertBeforeUpload = (e) => {
                           </span>
                           <button
                             type="submit"
-                            onClick={() => {
-                              dispatch(
-                                completeUpload({
-                                  currentUpload: currentUpload,
-                                  user: currentUser,
-                                  email: userEmail,
-                                })
-                              );
-                            }}
+                            onClick={onSubmit}
                             className="text-white bg-green-600 px-4 py-2 my-2 mx-2 rounded-md"
                           >
                             Upload

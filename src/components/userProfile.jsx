@@ -1,4 +1,6 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react"
+import { updateUserInfo } from "../userSlice";
 
 const Profile = () => {
   const user = useSelector((state) => state.user.user);
@@ -7,6 +9,11 @@ const Profile = () => {
   const year = user.createdAt.split("-")[0];
   const actualDay = user.createdAt.split("-")[2].split("T")[0];
   const actualMonth = user.createdAt.split("-")[1];
+  const [newFname, setFname] = useState(fname)
+  const [newLname, setLname] = useState(lname);
+  const [edit, setEdit] = useState(false);
+  const dispatch = useDispatch();
+
   console.log(user);
 
   return (
@@ -21,7 +28,9 @@ const Profile = () => {
         <p className="text-gray-600 text-sm">Joined in {year}</p>
         <button
           className="my-4 py-3 px-4 bg-gray-500 text-white rounded-full font-semibold"
-          onClick={() => alert("Bruv, You're asking for a bit much")}
+          onClick={() => {
+            setEdit(true)
+          }}
         >
           Change Details
         </button>
@@ -31,19 +40,20 @@ const Profile = () => {
       </div>
       <div className="w-full py-4">
         <div className="text-gray-700 text-lg">
-          <p className="mb-2">
-            <span className="font-semibold">First Name:</span> {user.firstName}
+          <p className="mb-4">
+            <span className="font-semibold">First Name:</span> {edit ? <input onChange={(e) => setFname(e.target.value)} value={newFname} className="border-blue-300 border-[1.3px] rounded-xl px-4 focus-visible:outline-0" /> : fname}
           </p>
-          <p className="mb-2">
-            <span className="font-semibold">Last Name:</span> {user.lastName}
+          <p className="mb-4">
+            <span className="font-semibold">Last Name:</span> {edit ? <input onChange={(e) => setLname(e.target.value)} value={newLname} className="border-blue-300 border-[1.3px] rounded-xl px-4 focus-visible:outline-0" /> : lname}
           </p>
-          <p className="mb-2">
+          <p className="mb-4">
             <span className="font-semibold">Email:</span> {user.email}
           </p>
-          <p className="mb-2">
+          <p className="mb-4">
             <span className="font-semibold">Joined:</span> {actualDay} / {actualMonth} / {year}
           </p>
         </div>
+        {edit ? <button onClick={() => dispatch(updateUserInfo({firstName: fname, lastName: lname}))}>Save changes</button> : ""}
       </div>
     </div>
   );

@@ -37,9 +37,6 @@ const UserNavbar = () => {
             >
               Bartr
             </h1>
-            <p className="cursor-pointer" onClick={() => navigate("/")}>
-              Home
-            </p>
             <p
               className="cursor-pointer"
               onClick={() => navigate("/categories")}

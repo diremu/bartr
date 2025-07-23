@@ -4,9 +4,7 @@ const UserDashboard = () => {
   const user = useSelector((state) => state.user.user);
   const uploads = useSelector((state) => state.upload.uploads);
   const userUploads = uploads.filter((img) => img.email === user.email);
-  const mostRecentUpload =
-    userUploads.length > 0 ? userUploads[-1] : null;
-
+  console.log(userUploads)
   return (
     <div className="w-full mx-auto py-10 px-4 bg-white">
       <h3 className="text-3xl font-bold text-center text-gray-800 mb-6">
@@ -34,21 +32,32 @@ const UserDashboard = () => {
           </div>
         </div>
       </div>
-      {mostRecentUpload ? (
+      {userUploads ? (
         <div className="my-4 mx-auto py-4 px-6 w-[80%] bg-gray-100 rounded-md shadow-sm">
           <p className="font-semibold text-lg text-gray-700">Most Recent Upload</p>
           <div className="my-3 text-center">
-            <img
-              src={mostRecentUpload.image}
-              alt="Most Recent Upload"
-              className="mx-auto h-40 w-60 object-cover rounded-md"
-            />
-            <p className="mt-2 text-lg font-bold text-gray-800">
-              {mostRecentUpload.title || "Untitled"}
-            </p>
-            <p className="text-sm text-gray-600">
-              {mostRecentUpload.description || "No description available"}
-            </p>
+            <table className="outline outline-gray-400 w-full">
+              <thead>
+                <tr className="px-2 py-2">
+                  <th>Id</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  userUploads.map((upload, index) => (
+                    <tr key={index} className="px-2 py-2 mx-3 my-2">
+                      <td>{upload.id}</td>
+                      <td>{upload.title}</td>
+                      <td>{upload.description}</td>
+                      <td>{upload.status}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
           </div>
         </div>
       ) : (
