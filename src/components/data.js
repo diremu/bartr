@@ -24,11 +24,11 @@ export const Items = [
         description: "A antique table kept in fairly well condition, still very suitable for dining and other activities.",
         item: "diningtable",
         additionalViews: [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuADL2oLeHf9lpVkg06buPZr45rXMHSAHlfVLrAGriVStxdRRBWN8X10P38DT1PlJP2kED14XUG2TKonX8Rhv_zx1Frb8bOCD74WYdUjWnxhKqcvfo7SxfQR2qcfvs-9TfTja0Lz-9YjSO8XUfsIWYUWBxBbImFZBAYmvW4jCMIhK1yszdBO5svaId29PnjS6bTGpks-YISdUFBWLwBjISDfTz2FO7NH1VyeOkx8c34NCvoTXBZFDzibVS6AwNNwfz-Aa0e3H8DlKQE",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuAbhcg5pyscN6oRixezNBmdN29eXvYUCJZQi5QjnUXENt8iCOJq5L16yi-6SZufq93Rg4xBsb8_yS6mo7Hgu5Gn0lLh-tF-WtMFPVSOlejtraUwcJzEwsDpTAMBjCFi2QhmxVuYmwdMuj9ka7g_tB-QJ524gh2CeMYestwBVpNjCTD2bqRZzxEyG3gVQB_116qzF3oFg-jIMIp-3YUvSqQRy0572OEgXcv-1cgtu_L0zEgLhEd_t4Vw3L81W55ZR1Yf2x0REL6in7Y",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuBO1m106AX1ceYHafM_uvRXTNcD4l5CJuDHbFnS52Tqzt1NoCvFXC6eKOPeKMNJfkEeWe4otm9TvjgGAiMod5TrO5R1RPf_-zZae10cWsxB_gnfpktY8rySs0pgK00IILLE_YN1fVN2mc24badXKDDp84JKOD1hGSi4qk3EayurkvPpyRWGcGYWEenIrLbX9KX00UnxjdQLZX7tDeRp87Sum67cNipEq_t7cERnNdkpjM7eapj0x_aDlYA3DxPq9gBBCKFEGQkRzvE"
+            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
+            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
+            "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&q=80"
         ],
-        tradeOptions: ["Furniture", "Trading Cards"],
+        tradeOptions: ["Furniture", "Home Decor", "Kitchen Appliances"],
         price: 940
     },
     {
@@ -40,11 +40,11 @@ export const Items = [
         description: "A cozy armchair that has been used but remains in good condition, perfect for relaxing.",
         item: "armchair",
         additionalViews: [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuD_DHxt4k-sNEEZnHqdJnWxOnznSWu8F2spEKKDRClR3yg9kIc4-lWnYRDtAFVjTo7eSuOIwAtYx_izYfmgwRI8tx1xP_lxtrj8_RLjj3hJY39AvEZ5qv8LkRaVNj6eGqvynydQo9SGanRfN7siGaEqrmA6hz4DIF5N5YaVdUL27X_8lMjBb7gQr6RP_v-27Ggxaqvx48K6EYMv9DRIgSvI-1zp77z6wfnRIm_rkwgwdoEKgzGoD5jUlnZWM0iSnmi3wiJvtKjIf5o",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuD9MGeGn5M47SEIl3Nic1JLTcYDKqLqYm9xfkVXMkpNmvT7eJgbHbWF6Dq1GAiI6KyIfO5C6WWaqgy5AaGdYfA3K0ZXpWDcMp8LFUgc1UvvHOJD4KIXYmsgl5VlN6InrER0xOTx0kuEWzUYgw6sw0MG0LRPFJ6upr-CNSTn4kMhTePxnBxwJAVGPT1O1eOrXWQvFistslzW8JCfvcHQbsEncmB-YcXkW2yjxR7p6Cqow50WVG_jz5cKz9AaZc9Ei9t4DEXWEVgex-Q",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuBxlQOFxWTkQ5q5xwEpAqxesf-BTrI7dC5vG2bjN4t0Ud-G2FnAuzzdTvOWkC-9JXz0Exy_mh3o3OCXAiQmNkVbCp5maY1opDNhlPUIkmfG3jtbXL7a8RTRZr9Q6uuidQK2rsaxt9q7c7_sYyQVhEAtCULXLN5Ja7-Awn21jeMgI_f8rTJB9dxoM4ZRL9sFo1zLosxOXYG0mHUjR3bPOwUlQijNHDQ8M5hYeeuiu_R5jNvHTHt8LlUDfsO97yG759ibzrkq89nuyc4"
+            "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80",
+            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
+            "https://images.unsplash.com/photo-1551298370-9c50423e6b77?w=800&q=80"
         ],
-        tradeOptions: ["Furniture", "Decor"],
+        tradeOptions: ["Furniture", "Vintage Items", "Antiques"],
         price: 429
     },
     {
@@ -56,11 +56,11 @@ export const Items = [
         description: "A stylish coffee table that adds elegance to any living room, moderately used but still in great shape.",
         item: "coffeetable",
         additionalViews: [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuDkbr3ST56iecNTIklNtcTYhH0bc3NYDxIkhySvps9GH8tv-akUYeExpWjEAbwifATB46OfIBlXYDjwy2OcGL66k4Ng8nuo8hM6IRDu-f4vhHvFZKSYxeEL4BxQercrWcfif99cOoVHDR-cQwVDvIeyiwv5CACZbDdr-AQLXjmDoaoLHG7asefShrAbon2r5aEmbmlll-7xCVzVHZ511PuOLUvKU_ofvDiZ-RKpTtznuj_X4XV02eIBhRXWpI5eHIOyU_HVWoNWmvQ",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuAmztFsUiXVgDYsdSAJVT1t9ifk9noNp2H0AF88NXgtRE5wLx4hiUiqN-uj3QOGf2FKM5H1zlCc_JbFtGzytFn-Omqq2qNw8FfzE-pMyazDoiDj2whZZ22pK3GpgOVr5_w_8UDqW4sQFjVDQ5kNJ5bVxOmlcg2QCGCYgzxgFln5gjjZKsrw9-UcECro5fs7ylv_Jxc8sUw0eDjE0lDMAQd-fD5hNVcVIHMoKOEPm_E8kZlqzkq_eCH5nnPsral2vwf7T9-uKWMLfI0",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuCCuFy_CMQq5PQaA4QH4lgYj7rPWlaQ3sw5NDIjUa-GK0RvlZLuws35ehXblUMqX6bfFBiUixk5pB1LuLG3qNgN462NAuG4BOt7dV1nQtcA3KSHnUZr5iXKLklkOFdUkhyUb3rYGjL-6TZPVRZcgPXBVd5QIvgceL0TPxeqyKoCQBtYajAkxzILidPLPLRwFsPWJzuRbJis_6aGLufkS8xctLOY9i5eHtyxmOZ6dhflP2qubuXa1i1IKFK72egd5Pg90NyxH3aZ8uc"
+            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
+            "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&q=80",
+            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80"
         ],
-        tradeOptions: ["Furniture", "Decor"],
+        tradeOptions: ["Furniture", "Home Decor", "Glass Items"],
         price: 320.46
     },
     {
@@ -72,11 +72,11 @@ export const Items = [
         item: "xboxconsole",
         description: "A powerful gaming console in near mint condition, perfect for gaming enthusiasts.",
         additionalViews: [
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuDkbr3ST56iecNTIklNtcTYhH0bc3NYDxIkhySvps9GH8tv-akUYeExpWjEAbwifATB46OfIBlXYDjwy2OcGL66k4Ng8nuo8hM6IRDu-f4vhHvFZKSYxeEL4BxQercrWcfif99cOoVHDR-cQwVDvIeyiwv5CACZbDdr-AQLXjmDoaoLHG7asefShrAbon2r5aEmbmlll-7xCVzVHZ511PuOLUvKU_ofvDiZ-RKpTtznuj_X4XV02eIBhRXWpI5eHIOyU_HVWoNWmvQ",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuAmztFsUiXVgDYsdSAJVT1t9ifk9noNp2H0AF88NXgtRE5wLx4hiUiqN-uj3QOGf2FKM5H1zlCc_JbFtGzytFn-Omqq2qNw8FfzE-pMyazDoiDj2whZZ22pK3GpgOVr5_w_8UDqW4sQFjVDQ5kNJ5bVxOmlcg2QCGCYgzxgFln5gjjZKsrw9-UcECro5fs7ylv_Jxc8sUw0eDjE0lDMAQd-fD5hNVcVIHMoKOEPm_E8kZlqzkq_eCH5nnPsral2vwf7T9-uKWMLfI0",
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuCCuFy_CMQq5PQaA4QH4lgYj7rPWlaQ3sw5NDIjUa-GK0RvlZLuws35ehXblUMqX6bfFBiUixk5pB1LuLG3qNgN462NAuG4BOt7dV1nQtcA3KSHnUZr5iXKLklkOFdUkhyUb3rYGjL-6TZPVRZcgPXBVd5QIvgceL0TPxeqyKoCQBtYajAkxzILidPLPLRwFsPWJzuRbJis_6aGLufkS8xctLOY9i5eHtyxmOZ6dhflP2qubuXa1i1IKFK72egd5Pg90NyxH3aZ8uc"
+            "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80",
+            "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
+            "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&q=80"
         ],
-        tradeOptions: ["Technology", "Gaming"],
+        tradeOptions: ["Gaming Consoles", "Electronics", "Controllers"],
         price: 722
     }
 ]
