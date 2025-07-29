@@ -36,7 +36,8 @@ export default function Landing() {
             <h2 className="font-semibold text-xl">Popular Categories</h2>
             <div className="flex gap-2 md:gap-6 lg:gap-8 xl:gap-10 flex-wrap md:justify-center">
               {Categories.map((data, index) => (
-                <Card key={index} type="category" image={data.image} title={data.title} />
+                <Card key={index} type="category" image={data.image} title={data.title}
+                onClick={() => nav(`/categories/${data.category}`)} />
               ))}
             </div>
           </div>
