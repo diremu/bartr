@@ -59,6 +59,7 @@ const convertBeforeUpload = (e) => {
     } else if (currentUpload.length === 0) {
       alert("Please upload at least one image for your item");
     } else {
+      console.log(product.ownerEmail, product.ownerName)
       dispatch(
         completeUpload({
           file: currentUpload,
@@ -66,7 +67,10 @@ const convertBeforeUpload = (e) => {
           title: title,
           description: description,
           email: userEmail,
-          status: "pending"
+          status: "pending",
+          itemForBid: product.title,
+          itemOwner: product.ownerName,
+          itemOwnerEmail: product.ownerEmail,
         })
       );
       setVisible(false);
@@ -134,13 +138,13 @@ const convertBeforeUpload = (e) => {
                           <option value="" disabled className="text-gray-500">
                             Select condition
                             </option>
-                          <option value="new">New</option>
-                          <option value="fairlyused">Fairly Used</option>
-                          <option value="moderatelyused">
+                          <option value="New">New</option>
+                          <option value="Fairly Used">Fairly Used</option>
+                          <option value="Moderately Used">
                             Moderately Used
                           </option>
-                          <option value="heavilyused">
-                            Heavily Used/ Worn Out
+                          <option value="Heavily Used">
+                            Heavily Used / Worn Out
                           </option>
                         </select>
                       </div>

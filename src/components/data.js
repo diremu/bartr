@@ -13,6 +13,8 @@ export const Items = [
             "https://lh3.googleusercontent.com/aida-public/AB6AXuBO1m106AX1ceYHafM_uvRXTNcD4l5CJuDHbFnS52Tqzt1NoCvFXC6eKOPeKMNJfkEeWe4otm9TvjgGAiMod5TrO5R1RPf_-zZae10cWsxB_gnfpktY8rySs0pgK00IILLE_YN1fVN2mc24badXKDDp84JKOD1hGSi4qk3EayurkvPpyRWGcGYWEenIrLbX9KX00UnxjdQLZX7tDeRp87Sum67cNipEq_t7cERnNdkpjM7eapj0x_aDlYA3DxPq9gBBCKFEGQkRzvE"
         ],
         tradeOptions: ["Furniture", "TV"],
+        ownerEmail: "diremuadebanjo@gmail.com",
+        ownerName: "Dbax Paparazzi",
         price: 650
     },
     {
@@ -29,6 +31,8 @@ export const Items = [
             "https://lh3.googleusercontent.com/aida-public/AB6AXuBO1m106AX1ceYHafM_uvRXTNcD4l5CJuDHbFnS52Tqzt1NoCvFXC6eKOPeKMNJfkEeWe4otm9TvjgGAiMod5TrO5R1RPf_-zZae10cWsxB_gnfpktY8rySs0pgK00IILLE_YN1fVN2mc24badXKDDp84JKOD1hGSi4qk3EayurkvPpyRWGcGYWEenIrLbX9KX00UnxjdQLZX7tDeRp87Sum67cNipEq_t7cERnNdkpjM7eapj0x_aDlYA3DxPq9gBBCKFEGQkRzvE"
         ],
         tradeOptions: ["Furniture", "Trading Cards"],
+        ownerEmail: "drxcular@gmail.com",
+        ownerName: "Drax Vampires",
         price: 940
     },
     {
@@ -45,6 +49,8 @@ export const Items = [
             "https://lh3.googleusercontent.com/aida-public/AB6AXuBxlQOFxWTkQ5q5xwEpAqxesf-BTrI7dC5vG2bjN4t0Ud-G2FnAuzzdTvOWkC-9JXz0Exy_mh3o3OCXAiQmNkVbCp5maY1opDNhlPUIkmfG3jtbXL7a8RTRZr9Q6uuidQK2rsaxt9q7c7_sYyQVhEAtCULXLN5Ja7-Awn21jeMgI_f8rTJB9dxoM4ZRL9sFo1zLosxOXYG0mHUjR3bPOwUlQijNHDQ8M5hYeeuiu_R5jNvHTHt8LlUDfsO97yG759ibzrkq89nuyc4"
         ],
         tradeOptions: ["Furniture", "Decor"],
+        ownerEmail: "jasondorito@yahoo.com",
+        ownerName: "Jason Damned",
         price: 429
     },
     {
@@ -61,6 +67,8 @@ export const Items = [
             "https://lh3.googleusercontent.com/aida-public/AB6AXuCCuFy_CMQq5PQaA4QH4lgYj7rPWlaQ3sw5NDIjUa-GK0RvlZLuws35ehXblUMqX6bfFBiUixk5pB1LuLG3qNgN462NAuG4BOt7dV1nQtcA3KSHnUZr5iXKLklkOFdUkhyUb3rYGjL-6TZPVRZcgPXBVd5QIvgceL0TPxeqyKoCQBtYajAkxzILidPLPLRwFsPWJzuRbJis_6aGLufkS8xctLOY9i5eHtyxmOZ6dhflP2qubuXa1i1IKFK72egd5Pg90NyxH3aZ8uc"
         ],
         tradeOptions: ["Furniture", "Decor"],
+        ownerEmail: "racoongalaxy@gmail.com",
+        ownerName: "Racoon Galaxy Again",
         price: 320.46
     },
     {
@@ -77,6 +85,8 @@ export const Items = [
             "https://lh3.googleusercontent.com/aida-public/AB6AXuCCuFy_CMQq5PQaA4QH4lgYj7rPWlaQ3sw5NDIjUa-GK0RvlZLuws35ehXblUMqX6bfFBiUixk5pB1LuLG3qNgN462NAuG4BOt7dV1nQtcA3KSHnUZr5iXKLklkOFdUkhyUb3rYGjL-6TZPVRZcgPXBVd5QIvgceL0TPxeqyKoCQBtYajAkxzILidPLPLRwFsPWJzuRbJis_6aGLufkS8xctLOY9i5eHtyxmOZ6dhflP2qubuXa1i1IKFK72egd5Pg90NyxH3aZ8uc"
         ],
         tradeOptions: ["Technology", "Gaming"],
+        ownerEmail: "joshualinkedin@trapezium.square.com",
+        ownerName: "Joshua Recruiter",
         price: 722
     }
 ]

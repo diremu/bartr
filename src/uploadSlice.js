@@ -44,7 +44,10 @@ const uploadSlice = createSlice({
                     email: action.payload.email,
                     title: action.payload.title,
                     status: action.payload.status,
-                    description: action.payload.description
+                    description: action.payload.description,
+                    itemForBid: action.payload.itemForBid,
+                    itemOwner: action.payload.itemOwner,
+                    itemOwnerEmail: action.payload.itemOwnerEmail
                 }));
                 state.uploads = [...state.uploads, ...newUploads]
                 setUploadsToSession(state.uploads);
