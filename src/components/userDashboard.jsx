@@ -3,16 +3,20 @@ import { Items } from "./data";
 
 const UserDashboard = () => {
   const user = useSelector((state) => state.user.user);
-  const uploads = useSelector((state) => state.upload.uploads);
-  const userUploads = uploads.filter((img) => img.email === user.email);
+  const uploads = useSelector((state) => state.upload.uploads); // all uploads
+  const userUploads = uploads.filter((img) => img.email === user.email); // uploads made by the current user
   const ItemOwner = Items.filter(
-    (item) => user.firstName + " " + user.lastName === item.ownerName
-  );
+    (item) => (user.firstName + " " + user.lastName === item.ownerName) && user.email === item.ownerEmail
+  ); //filters items that belong to the current user in the Items array
+  const OwnedItemsForBid = ItemOwner.map((item) => item.title) // makes an array of titles from the Item array
+  console.log(OwnedItemsForBid)
   const currentBids = uploads.filter(
-    (upload) => upload.itemOwner === user.firstName + " " + user.lastName
-  );
-  console.log(ItemOwner);
-  console.log(currentBids);
+    (upload) => OwnedItemsForBid.includes(upload?.itemForBid)
+  ) // so this is meant to filter the uploads based on if their titles are in the previous array, then i still have to filter again to get the ones that are not made by the owner themselves.
+  const nonCompromisedBids = currentBids.filter(
+    (item) => item.email !== user.email
+  );// this is to filter out the bids made by the owner themselves and it actually works so don't touch.
+  console.log(nonCompromisedBids);
   return (
     <div className="w-full mx-auto py-10 px-4 bg-white">
       <h3 className="text-3xl font-bold text-center text-gray-800 mb-6">
@@ -116,20 +120,20 @@ const UserDashboard = () => {
                 <br />
                 <p className="text-gray-600">Price: ${item.price}</p>
                 <p className="text-gray-600 my-4">Days Since Upload: 9</p>
-                {currentBids.map((item, index) => {
+                {nonCompromisedBids.map((item, index) => (
                   <div className="border-[1.5px] border-gray-300 rounded-md p-4" key={index}>
                     <p>{item.user}</p>
-                    <div>
-                      <button>Decline</button>
-                      <button>Accept</button>
+                    <div className="flex w-full justify-between items-center py-4 px-6">
+                      <button className="bg-red-500 px-4 py-2 text-white rounded-md">Decline</button>
+                      <button className="bg-green-500 px-4 py-2 text-white rounded-md">Accept</button>
                     </div>
                     <div>
-                      {item.image.map((img, index) => {
-                        <img src={img} key={index} className="" />
-                      })}
+                      {item.image.map((img, index) => (
+                        <img src={img} key={index} alt="Examples" className="h-50 w-50" />
+                      ))}
                     </div>
-                  </div>;
-                })}
+                  </div>
+                ))}
               </div>
             ))
           ) : (

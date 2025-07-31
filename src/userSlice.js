@@ -84,6 +84,7 @@ export const userSlice = createSlice({
       }
       
       const users = getUsersFromStorage();
+      console.log(users)
       const user = users.find(u => u.email === email);
       
       if (!user) {

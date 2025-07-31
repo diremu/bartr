@@ -19,7 +19,7 @@ const uploadSlice = createSlice({
     reducers: {
         beginUpload: (state, action) => {
             if (action.payload.uploadFiles && action.payload.uploadFiles.length > 0) {
-                const newFiles = action.payload.uploadFiles
+                const newFiles = action.payload.uploadFiles.filter( file => !state.currentUpload.includes(file))
                 console.log(newFiles);
                 state.currentUpload.push([...newFiles])
                 state.uploadError = null;
