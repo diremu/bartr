@@ -18,7 +18,7 @@ export const Items = [
         price: 650
     },
     {
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTuYLpYDeWXm_nPtLwEi4xCVEuRneAPsOww1zIqRN4P1PUrkWKXtf-05juLp_0Un3AEPG3gf1AzVLHxyMO09mZyaW_Qf7aM69h0BoDNAXciYbmXTKfiVtep3naCRea0ByUQbrW8iBC7EyVuhrwwYO4NzslwkP5cMMYf2wRP4_WFd0w8aseI93A2JmDU88iB0zitpwo-FVUlqUueNtbPBd29mwEYSTs7RXxhSS9PeEQC6rgIN5V43R6iArxFwosaRqAhhsrhAeAgC0",
+        image: "https://plus.unsplash.com/premium_photo-1675744019321-f90d6d719da7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         title: "Stylish dining table",
         subtitle: "Excellent condition",
         alt: "A dining table in excellent condition",
@@ -26,9 +26,9 @@ export const Items = [
         description: "A antique table kept in fairly well condition, still very suitable for dining and other activities.",
         item: "diningtable",
         additionalViews: [
-            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
-            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
-            "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&q=80"
+            "https://images.unsplash.com/photo-1605317039225-0001f706cdef?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1594000311835-6d564e5a46b3?q=80&w=411&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1599327286062-40b0a7f2b305?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         tradeOptions: ["Furniture", "Trading Cards"],
         ownerEmail: "drxcular@gmail.com",
@@ -36,7 +36,7 @@ export const Items = [
         price: 940
     },
     {
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB2Nul0zang-brPiL68f3j0PC1Oqm-fHktid-DB2VQ6XrnP3TNb5r5AcYfj-r5FWyV6O4Vk5qhHvI2fwlo457UqBwuybt5iXjA50tjYHMOxyOyWxCgbRUU1vK-P2zzXWOLB2SjeA3gFp0mfVwTQpMruQdATs6iOTY0w7e0i0XmkNvlKKXEsn_Z4ONOPKGJQ2uhdtIHvK5DSTcD6v22XpAZIqH9eUOhlAd-giwY68lP1dXMMzSbVQcCtDZuJJXz_flfd5Y6jeu5uiJM",
+        image: "https://images.unsplash.com/photo-1634148739177-775032f3feb1?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         title: "Comfortable Armchair",
         subtitle: "Fairly Used",
         alt: "A fairly used armchair",
@@ -44,9 +44,9 @@ export const Items = [
         description: "A cozy armchair that has been used but remains in good condition, perfect for relaxing.",
         item: "armchair",
         additionalViews: [
-            "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80",
-            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
-            "https://images.unsplash.com/photo-1551298370-9c50423e6b77?w=800&q=80"
+            "https://images.unsplash.com/photo-1718049719688-764249c6800d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1695457264650-c0bd2202fb5e?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1714872245785-674ae3038d21?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         tradeOptions: ["Furniture", "Decor"],
         ownerEmail: "jasondorito@yahoo.com",
@@ -54,7 +54,7 @@ export const Items = [
         price: 429
     },
     {
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxlQOFxWTkQ5q5xwEpAqxesf-BTrI7dC5vG2bjN4t0Ud-G2FnAuzzdTvOWkC-9JXz0Exy_mh3o3OCXAiQmNkVbCp5maY1opDNhlPUIkmfG3jtbXL7a8RTRZr9Q6uuidQK2rsaxt9q7c7_sYyQVhEAtCULXLN5Ja7-Awn21jeMgI_f8rTJB9dxoM4ZRL9sFo1zLosxOXYG0mHUjR3bPOwUlQijNHDQ8M5hYeeuiu_R5jNvHTHt8LlUDfsO97yG759ibzrkq89nuyc4",
+        image: "https://images.unsplash.com/photo-1461418559055-6f020c5a91e7?q=80&w=813&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         title: "Elegant Coffee Table",
         subtitle: "Moderately Used",
         alt: "An elegant coffee table in moderately used condition",
@@ -62,9 +62,9 @@ export const Items = [
         description: "A stylish coffee table that adds elegance to any living room, moderately used but still in great shape.",
         item: "coffeetable",
         additionalViews: [
-            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
-            "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&q=80",
-            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80"
+            "https://images.unsplash.com/photo-1461418126083-a84e9ca935de?q=80&w=813&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1601276861758-2d9c5ca69a17?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1571422065917-030a0f0e6350?q=80&w=475&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ],
         tradeOptions: ["Furniture", "Decor"],
         ownerEmail: "racoongalaxy@gmail.com",
@@ -72,7 +72,7 @@ export const Items = [
         price: 320.46
     },
     {
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9MGeGn5M47SEIl3Nic1JLTcYDKqLqYm9xfkVXMkpNmvT7eJgbHbWF6Dq1GAiI6KyIfO5C6WWaqgy5AaGdYfA3K0ZXpWDcMp8LFUgc1UvvHOJD4KIXYmsgl5VlN6InrER0xOTx0kuEWzUYgw6sw0MG0LRPFJ6upr-CNSTn4kMhTePxnBxwJAVGPT1O1eOrXWQvFistslzW8JCfvcHQbsEncmB-YcXkW2yjxR7p6Cqow50WVG_jz5cKz9AaZc9Ei9t4DEXWEVgex-Q",
+        image: "https://pictures-nigeria.jijistatic.net/75340413_MTYwMC0xMjAwLTE0NGY4MjJjYzA.webp",
         title: "Xbox Series X Slim",
         subtitle: "Near Mint condition",
         alt: "An Xbox Series X Slim in near mint condition",
@@ -80,9 +80,9 @@ export const Items = [
         item: "xboxconsole",
         description: "A powerful gaming console in near mint condition, perfect for gaming enthusiasts.",
         additionalViews: [
-            "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80",
-            "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
-            "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&q=80"
+            "https://pictures-nigeria.jijistatic.net/75340510_MTYwMC0yMTM0LTc2ZjNmNzg3YTI.webp",
+            "https://pictures-nigeria.jijistatic.net/75340512_MTYwMC0xMjAwLWEyZDM4OGRmODg.webp",
+            "https://pictures-nigeria.jijistatic.net/75340479_MTYwMC0yMTM0LTc1NWRmOTgxMzE.webp"
         ],
         tradeOptions: ["Technology", "Gaming"],
         ownerEmail: "joshualinkedin@trapezium.square.com",

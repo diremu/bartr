@@ -6,9 +6,10 @@ import Categories from "./components/Categories.jsx";
 import Navbar from "./components/Navbar.jsx";
 import AuthNavbar from "./components/AuthNavbar.jsx";
 import Item from "./components/Item.jsx";
-import  UserNavbar  from "./components/userNavbar.jsx";
+import UserNavbar from "./components/userNavbar.jsx";
 import UserDashboard from "./components/userDashboard.jsx";
 import Profile from "./components/userProfile.jsx";
+import ForgotPassword from "./components/ForgotPassword.jsx";
 import { useSelector } from "react-redux";
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
         <Route element={<AuthNavbar />}>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Route>
         {!authenticated ? (
           <Route element={<Navbar />}>

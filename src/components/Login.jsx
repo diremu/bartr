@@ -107,6 +107,15 @@ const Login = () => {
                 'Sign in'
               )}
             </button>
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Forgot your password?{' '}
+              <Link
+                to="/forgot-password"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
+              >
+                Reset it here
+              </Link>
+            </p>
           </div>
         </form>
       </div>

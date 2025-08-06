@@ -27,6 +27,7 @@ export const userSlice = createSlice({
     signupError: null,
     loginLoading: false,
     signupLoading: false,
+    otp: "",
   },
   reducers: {
     loginStart: (state) => {
@@ -159,12 +160,26 @@ export const userSlice = createSlice({
       if (action.payload.lastName) {
         selectedUser.lastName = action.payload.lastName;
       }
-      if (action.payload.password) {
-        selectedUser.password = action.payload.password;
-      }
       state.user = selectedUser;
       state.users.splice(state.users.findIndex(user => user.email === selectedUser.email), 1, selectedUser);
       saveToStorage('users', state.users);
+    },
+    forgotPasswordChange: (state, action) => {
+      const { email, newPassword } = action.payload;
+      const user = state.users.find(user => user.email === email);
+      if (user) {
+        user.password = newPassword;
+        state.users.splice(state.users.findIndex(u => u.email === email), 1, user);
+        saveToStorage('users', state.users);
+      } else {
+        state.signupError = "User not found. Please check your email.";
+      }
+    },
+    makeOTP: (state, action) => {
+      const otp = Math.random().toString(10).substring(2, 8);
+      state.otp = {pin: otp, user: action.payload.userEmail};
+      console.log("Generated OTP:", otp);
+      return otp;
     }
   },
 });
@@ -180,6 +195,8 @@ export const {
   clearErrors,
   attemptLogin,
   attemptSignup,
-  updateUserInfo
+  updateUserInfo,
+  forgotPasswordChange,
+  makeOTP,
 } = userSlice.actions;
 export default userSlice.reducer;

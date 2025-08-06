@@ -21,7 +21,8 @@ const uploadSlice = createSlice({
             if (action.payload.uploadFiles && action.payload.uploadFiles.length > 0) {
                 const newFiles = action.payload.uploadFiles.filter( file => !state.currentUpload.includes(file))
                 console.log(newFiles);
-                state.currentUpload.push([...newFiles])
+                state.currentUpload = [...state?.currentUpload, ...newFiles]
+                console.log(state.currentUpload)
                 state.uploadError = null;
                 return ;
             } else {
@@ -38,7 +39,7 @@ const uploadSlice = createSlice({
         completeUpload: (state, action) => {
             if (state.currentUpload && state.currentUpload.length > 0 && state.currentUpload.length < 4) {
                 const newUploads = state.currentUpload.map(img => ({
-                    image: [...img],
+                    image: img,
                     id: Date.now(),
                     user: action.payload.user.firstName,
                     email: action.payload.email,
@@ -49,8 +50,9 @@ const uploadSlice = createSlice({
                     itemOwner: action.payload.itemOwner,
                     itemOwnerEmail: action.payload.itemOwnerEmail
                 }));
-                state.uploads = [...state.uploads, ...newUploads]
+                state.uploads = [...state.uploads, newUploads]
                 setUploadsToSession(state.uploads);
+                console.log("New Uploads", newUploads)
                 console.log("Uploads completed:", state.uploads);
                 console.log(action.payload)
                 state.currentUpload = [];
