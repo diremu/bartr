@@ -10,11 +10,11 @@ const getFromStorage = (key) => {
 };
 
 const getUsersFromStorage = () => {
-  return getFromStorage('users') || [];
+  return getFromStorage("users") || [];
 };
 
 const getCurrentUser = () => {
-  return getFromStorage('currentUser');
+  return getFromStorage("currentUser");
 };
 
 export const userSlice = createSlice({
@@ -39,7 +39,7 @@ export const userSlice = createSlice({
       state.isAuthenticated = true;
       state.loginLoading = false;
       state.loginError = null;
-      saveToStorage('currentUser', action.payload);
+      saveToStorage("currentUser", action.payload);
     },
     loginFailure: (state, action) => {
       state.loginLoading = false;
@@ -58,8 +58,8 @@ export const userSlice = createSlice({
       state.signupLoading = false;
       state.signupError = null;
       state.users.push(userDetails);
-      saveToStorage('users', state.users);
-      saveToStorage('currentUser', userDetails);
+      saveToStorage("users", state.users);
+      saveToStorage("currentUser", userDetails);
     },
     signupFailure: (state, action) => {
       state.signupLoading = false;
@@ -70,7 +70,7 @@ export const userSlice = createSlice({
       state.isAuthenticated = false;
       state.loginError = null;
       state.signupError = null;
-      sessionStorage.removeItem('currentUser');
+      sessionStorage.removeItem("currentUser");
     },
     clearErrors: (state) => {
       state.loginError = null;
@@ -78,82 +78,86 @@ export const userSlice = createSlice({
     },
     attemptLogin: (state, action) => {
       const { email, password } = action.payload;
-      
+
       if (!email || !password) {
         state.loginError = "Email and password are required";
         return;
       }
-      
+
       const users = getUsersFromStorage();
-      console.log(users)
-      const user = users.find(u => u.email === email);
-      
+      console.log(users);
+      const user = users.find((u) => u.email === email);
+
       if (!user) {
-        state.loginError = "User not found. Please check your email or sign up.";
+        state.loginError =
+          "User not found. Please check your email or sign up.";
         return;
       }
-      
+
       if (user.password !== password) {
         state.loginError = "Incorrect password. Please try again.";
         return;
       }
-      
+
       state.user = user;
       state.isAuthenticated = true;
       state.loginError = null;
-      saveToStorage('currentUser', user);
+      saveToStorage("currentUser", user);
     },
     attemptSignup: (state, action) => {
       const { firstName, lastName, email, password } = action.payload;
-      
+
       if (!firstName || !lastName || !email || !password) {
         state.signupError = "All fields are required";
         return;
       }
-      
+
       const emailRegex = /^[a-zA-Z0-9._%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{3}$/;
       if (!emailRegex.test(email)) {
         state.signupError = "Please enter a valid email address";
         return;
       }
-      
-      const passwordRegex = /^[a-zA-Z][a-zA-Z0-9._%+-@]{7,}$/
+
+      const passwordRegex = /^[a-zA-Z][a-zA-Z0-9._%+-@]{7,}$/;
 
       if (password.length < 8) {
         state.signupError = "Password must be at least 8 characters long";
         return;
       }
       if (!passwordRegex.test(password)) {
-        state.signupError = "Password must start with a letter and contain at least 8 characters";
+        state.signupError =
+          "Password must start with a letter and contain at least 8 characters";
         return;
       }
 
       const users = getUsersFromStorage();
-      const existingUser = users.find(user => user.email === email);
-      
+      const existingUser = users.find((user) => user.email === email);
+
       if (existingUser) {
         state.signupError = "An account with this email already exists";
         return;
       }
-      
+
       const newUser = {
         id: Date.now().toString(),
         firstName,
         lastName,
         email,
         password,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
       };
-      
+
       state.user = newUser;
       state.isAuthenticated = true;
       state.signupError = null;
       state.users.push(newUser);
-      saveToStorage('users', state.users);
-      saveToStorage('currentUser', newUser);
+      saveToStorage("users", state.users);
+      saveToStorage("currentUser", newUser);
     },
     updateUserInfo: (state, action) => {
-      const selectedUser = state.users.find(user => user.email === action.payload.email);
+      const selectedUser = state.users.find(
+        (user) => user.email === action.payload.email
+      );
       if (action.payload.firstName) {
         selectedUser.firstName = action.payload.firstName;
       }
@@ -161,37 +165,44 @@ export const userSlice = createSlice({
         selectedUser.lastName = action.payload.lastName;
       }
       state.user = selectedUser;
-      state.users.splice(state.users.findIndex(user => user.email === selectedUser.email), 1, selectedUser);
-      saveToStorage('users', state.users);
+      state.users.splice(
+        state.users.findIndex((user) => user.email === selectedUser.email),
+        1,
+        selectedUser
+      );
+      saveToStorage("users", state.users);
     },
     forgotPasswordChange: (state, action) => {
       const { email, newPassword } = action.payload;
-      const user = state.users.find(user => user.email === email);
+      const user = state.users.find((user) => user.email === email);
       if (user) {
         user.password = newPassword;
-        state.users.splice(state.users.findIndex(u => u.email === email), 1, user);
-        saveToStorage('users', state.users);
+        state.users.splice(
+          state.users.findIndex((u) => u.email === email),
+          1,
+          user
+        );
+        saveToStorage("users", state.users);
       } else {
         state.signupError = "User not found. Please check your email.";
       }
     },
     makeOTP: (state, action) => {
-      const otp = Math.random().toString(10).substring(2, 8);
-      state.otp = {pin: otp, user: action.payload.userEmail};
-      console.log("Generated OTP:", otp);
-      return otp;
-    }
+      const { user } = action.payload;
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      state.otp = { user, otp };
+    },
   },
 });
 
-export const { 
-  loginStart, 
-  loginSuccess, 
-  loginFailure, 
-  signupStart, 
-  signupSuccess, 
-  signupFailure, 
-  logout, 
+export const {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+  signupStart,
+  signupSuccess,
+  signupFailure,
+  logout,
   clearErrors,
   attemptLogin,
   attemptSignup,
