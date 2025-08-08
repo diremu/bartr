@@ -188,9 +188,9 @@ export const userSlice = createSlice({
       }
     },
     makeOTP: (state, action) => {
-      const { user } = action.payload;
-      const otp = Math.floor(100000 + Math.random() * 900000).toString();
-      state.otp = { user, otp };
+      const { user, otp } = action.payload;
+      const generatedOTP = otp || Math.floor(100000 + Math.random() * 900000).toString();
+      state.otp = { user, otp: generatedOTP };
     },
   },
 });

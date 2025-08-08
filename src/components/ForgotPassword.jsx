@@ -10,7 +10,6 @@ const ForgotPassword = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.users);
   const email = users.map((user) => user.email);
-  // console.log(email)
   const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState("");
   const [code, sendCode] = useState(false);
@@ -21,10 +20,7 @@ const ForgotPassword = () => {
 
   const basicRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const navigate = useNavigate();
-  //   const otp = useSelector((state) => state.user.otp);
-  // const newOtp = makeOTP("haha");
-  // console.log(newOtp)
-  // console.log(otp)
+
 
   function onSubmit(e) {
     e.preventDefault();
@@ -34,9 +30,12 @@ const ForgotPassword = () => {
       return;
     }
     if (email.includes(userEmail)) {
+      const generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+      dispatch(makeOTP({ user: userEmail, otp: generatedOTP }));
+      
       const emailTemplate = {
         email: userEmail,
-        passcode: pin.otp,
+        passcode: generatedOTP,
         time: new Date().toLocaleTimeString(),
       };
       console.log(emailTemplate);
@@ -56,9 +55,8 @@ const ForgotPassword = () => {
             );
             if (response.status === 200) {
               sendCode(true);
-              console.log(pin);
-              dispatch(makeOTP({ user: userEmail }));
-            }
+              setError("");
+              verifyCorrectCode(false);}
           },
           (error) => {
             console.log("An error occurred", error);
@@ -80,9 +78,9 @@ const ForgotPassword = () => {
       verifyCorrectCode(false);
       return;
     }
-    if (userOtp === pin) {
+    if (userOtp === pin.otp) {
       verifyCorrectCode(true);
-      console.log("Thanks gee");
+      console.log("OTP verification successful");
     } else {
       setError("Wrong Code. Please try again");
     }
@@ -197,7 +195,7 @@ const ForgotPassword = () => {
                 Password
               </label>
               <input
-                type="text"
+                type="password"
                 id="password"
                 name="password"
                 value={newPassword}
@@ -210,7 +208,7 @@ const ForgotPassword = () => {
               type="submit"
               className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              Verify OTP
+              Confirm New Password
             </button>
             {error && <p className="text-red-500 my-2 inline-block">{error}</p>}
           </form>
