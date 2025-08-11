@@ -30,44 +30,46 @@ const UserNavbar = () => {
     <div>
       <div className="border-b-[1.8px] lg:px-16 border-gray-100 h-16 flex items-center justify-between px-4 max-w-screen">
         <nav className="flex items-center justify-between w-full px-2">
-          <div className="flex items-center gap-10 basis-[42%]">
+          <div className="flex items-center gap-4 sm:gap-6 lg:gap-10 basis-[60%] sm:basis-[42%]">
             <h1
-              className="text-2xl font-bold cursor-pointer"
+              className="text-xl sm:text-2xl font-bold cursor-pointer"
               onClick={() => navigate("/")}
             >
               Bartr
             </h1>
-            <p
-              className="cursor-pointer"
-              onClick={() => navigate("/categories")}
-            >
-              Categories
-            </p>
-            <p
-              className="cursor-pointer"
-              onClick={() => navigate("/howitworks")}
-            >
-              How it works
-            </p>
-            <p className="cursor-pointer" onClick={() => navigate("/faqs")}>
-              FAQs
-            </p>
+            <div className="hidden sm:flex items-center gap-4 lg:gap-6">
+              <p
+                className="cursor-pointer text-sm lg:text-base hover:text-blue-600 transition-colors"
+                onClick={() => navigate("/categories")}
+              >
+                Categories
+              </p>
+              <p
+                className="cursor-pointer text-sm lg:text-base hover:text-blue-600 transition-colors"
+                onClick={() => navigate("/howitworks")}
+              >
+                How it works
+              </p>
+              <p className="cursor-pointer text-sm lg:text-base hover:text-blue-600 transition-colors" onClick={() => navigate("/faqs")}>
+                FAQs
+              </p>
+            </div>
           </div>
-          <div className="basis-[52%] flex items-center justify-end gap-6">
-            <div className="relative w-full max-w-xs">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="px-3 py-1 pr-10 border border-gray-300 rounded-xl bg-gray-100 placeholder:text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <span className="absolute inset-y-0 right-2 flex items-center pointer-events-none">
+          <div className="basis-[40%] sm:basis-[52%] flex items-center justify-end gap-2 sm:gap-4 lg:gap-6">
+            <div className="relative w-full max-w-[120px] sm:max-w-xs">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="px-3 py-1 pr-8 sm:pr-10 border border-gray-300 rounded-xl bg-gray-100 placeholder:text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              />
+            <span className="absolute inset-y-0 right-1 sm:right-2 flex items-center pointer-events-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 h-5 text-gray-500"
+                className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500"
               >
                 <path
                   strokeLinecap="round"
@@ -79,15 +81,15 @@ const UserNavbar = () => {
           </div>
             <div className="relative">
               <button
-                className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-3xl text-gray-700 font-semibold hover:bg-gray-200 transition-colors"
+                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-gray-100 rounded-2xl sm:rounded-3xl text-gray-700 font-semibold hover:bg-gray-200 transition-colors"
                 onMouseDown={e => {
                   e.stopPropagation();
                   setDropdown(prev => !prev);
                 }}
               >
-                <span className="font-bold">{user?.firstName}</span>
+                <span className="font-bold text-sm sm:text-base truncate max-w-[60px] sm:max-w-none">{user?.firstName}</span>
                 <svg
-                  className={`w-4 h-4 transition-transform ${
+                  className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${
                     dropdown ? "rotate-180" : "rotate-0"
                   }`}
                   fill="none"

@@ -5,19 +5,19 @@ const Card = ({ image, title, subtitle, alt, onClick, type = "item" }) => {
     let subtitleClass = "text-center mt-1 ";
 
     if (type === "category") {
-        cardClass += "p-2 w-56 h-48 md:w-[18%] md:h-[14vw] lg:w-[16%] lg:h-[12vw] xl:w-[15%] xl:h-[11vw] justify-start items-start";
-        imgClass += "w-40 h-32 md:w-[85%] md:h-[75%] mb-2 rounded-lg";
-        titleClass += "text-[16px] md:text-[17px] lg:text-[18px] text-gray-700 mt-2";
+        cardClass += "p-3 sm:p-4 w-full h-auto justify-start items-center border border-gray-200 shadow-sm hover:shadow-md transition-shadow";
+        imgClass += "w-full h-24 sm:h-28 md:h-32 object-cover mb-2 sm:mb-3 rounded-lg";
+        titleClass += "text-sm sm:text-base font-medium text-gray-700 text-center";
     } else if (type === "testimony") {
-        cardClass += "p-4 w-80 h-72 md:w-[30%] md:h-[50%] lg:w-[28%] lg:h-80 xl:w-[26%] xl:h-[60%] justify-center";
-        imgClass += "w-[85%] h-[80%] mb-4 rounded-sm";
-        titleClass += "text-[18px] md:text-[19px] lg:text-[20px] text-gray-700 mt-2 text-left";
-        subtitleClass += "text-[14px] md:text-[15px] lg:text-[15px] text-gray-500 text-left word-wrap";
+        cardClass += "p-4 w-full h-auto justify-start border border-gray-200 shadow-sm hover:shadow-md transition-shadow";
+        imgClass += "w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto sm:mx-0 mb-3 sm:mb-4";
+        titleClass += "text-base sm:text-lg font-medium text-gray-800 text-center sm:text-left mb-2";
+        subtitleClass += "text-sm sm:text-base text-gray-600 text-center sm:text-left leading-relaxed";
     } else {
-        cardClass += " w-64 h-64 items-start";
-        imgClass += "w-36 h-36 mb-3 rounded-lg";
-        titleClass += "text-[14px] text-gray-700 text-left";
-        subtitleClass += "text-[13px] text-gray-400";
+        cardClass += "p-3 sm:p-4 w-48 sm:w-52 md:w-56 h-auto flex-shrink-0 items-start border border-gray-200 shadow-sm hover:shadow-md transition-shadow";
+        imgClass += "w-full h-32 sm:h-36 object-cover mb-3 rounded-lg";
+        titleClass += "text-sm sm:text-base font-medium text-gray-700 text-left mb-1";
+        subtitleClass += "text-xs sm:text-sm text-gray-500 text-left";
     }
 
     return (
