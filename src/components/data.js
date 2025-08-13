@@ -113,7 +113,7 @@ export const Categories = [
     {
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuD_DHxt4k-sNEEZnHqdJnWxOnznSWu8F2spEKKDRClR3yg9kIc4-lWnYRDtAFVjTo7eSuOIwAtYx_izYfmgwRI8tx1xP_lxtrj8_RLjj3hJY39AvEZ5qv8LkRaVNj6eGqvynydQo9SGanRfN7siGaEqrmA6hz4DIF5N5YaVdUL27X_8lMjBb7gQr6RP_v-27Ggxaqvx48K6EYMv9DRIgSvI-1zp77z6wfnRIm_rkwgwdoEKgzGoD5jUlnZWM0iSnmi3wiJvtKjIf5o",
         title: "Clothing",
-        alt: "Clothing and Apparel",
+        alt: "Clothing",
         category: "clothing"
     },
 ]

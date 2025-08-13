@@ -42,9 +42,6 @@ const Navbar = () => {
             >
               Bartr
             </h1>
-            <p className="cursor-pointer hover:text-indigo-600 transition-colors" onClick={() => handleNavigation("/")}>
-              Home
-            </p>
             <p className="cursor-pointer hover:text-indigo-600 transition-colors" onClick={() => handleNavigation("/categories")}>
               Categories
             </p>
@@ -83,7 +80,7 @@ const Navbar = () => {
             <div className="flex gap-2 w-full items-center justify-around">
               {isAuthenticated ? (
                 <div className="flex w-full justify-around items-center">
-                  <button className="bg-blue-400 px-4 text-[14px] font-semibold py-2 rounded-3xl text-white hover:bg-blue-500 transition-colors">
+                  <button className="bg-blue-400 px-4 text-[14px] font-semibold py-2 rounded-3xl text-white hover:bg-blue-500 transition-colors" onClick={() =>handleNavigation("/list-item")}>
                     List an Item
                   </button>
                   <span className="text-sm text-gray-700">
