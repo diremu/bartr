@@ -3,11 +3,13 @@ import { Items, Categories, Testimonials, choiceCards } from "./components/data"
 import FeaturesCard from "./components/FeaturesCard"
 import Footer from "./components/Footer";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 export default function Landing() {
   const imgUrl =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuB9TxmopJZytwUCJUiPSVwGKGBUN35kGNQ9nTZ0QCeZL2GDs-8Rm3yuwK9uTiy1XM2fchfQRrWc_28tvjaxB82rPJ0qAclVCUGCim3nOcto0bvjw4ddwkcOHyuE08I_M0EFS9GLACaBCU1aOBpzcRhbMYiy65p5LrUJvFaCdMvamZs1SfS--T3c2r5uGwUuaGavDQskVvMFF2-OBJP7zkLJ6OqibgfRKky4uGBX4VNuqN98c45P7efWhYXijdbNyHwfIUvzuR7Hsn8";
     const nav = useNavigate();
+    const user = useSelector((state) => state.user.user);
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
       <div className="flex flex-col items-center">
@@ -73,11 +75,17 @@ export default function Landing() {
               ))}
           </div>
         </div>
-        <div className="w-full max-w-4xl xl:max-w-6xl px-4 sm:px-6 lg:px-8 my-8 sm:my-12 lg:my-16 text-center">
+        {!user ? (<div className="w-full max-w-4xl xl:max-w-6xl px-4 sm:px-6 lg:px-8 my-8 sm:my-12 lg:my-16 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Ready to Swap?</h2>
             <p className="mt-3 mb-4 sm:mb-6 text-sm sm:text-base">Join Bartr today and start exchanging your items for cash and new treasures.</p>
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg">Get Started</button>
-        </div>
+            <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg" onClick={() => nav("/signup")}>Get Started</button>
+        </div>) : (
+          <div className="w-full max-w-4xl xl:max-w-6xl px-4 sm:px-6 lg:px-8 my-8 sm:my-12 lg:my-16 text-center">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Welcome back to Bartr</h2>
+            <p className="mt-3 mb-4 sm:mb-6 text-sm sm:text-base">Are you ready to start trading your items?</p>
+            <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg" onClick={() => nav('/list-item')}>Start Trading</button>
+          </div>
+        )}
       </div>
       <div className="w-full bg-gray-50">
         <Footer />

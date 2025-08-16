@@ -3,17 +3,29 @@ import { Items } from "./data.js";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useRef, useEffect } from "react";
 import { beginUpload, completeUpload } from "../uploadSlice.js";
-import { current } from "@reduxjs/toolkit";
 
 const Item = () => {
   const { category, item } = useParams();
-  const product = Items.find(
+  const reduxItems = useSelector((state) => state.items.items);
+  
+  const allItems = [...Items, ...reduxItems];
+  
+  const product = allItems.find(
     (productItem) =>
       productItem.category === category && productItem.item === item
   );
+  
+  if (!product) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <p className="text-gray-500 text-lg">Item not found</p>
+      </div>
+    );
+  }
+  
   const images = product.additionalViews;
   const options = product.tradeOptions;
-  const similar = Items.filter(
+  const similar = allItems.filter(
     (similarItem) =>
       similarItem.category === category && similarItem.item !== item
   );
