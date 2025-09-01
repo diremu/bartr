@@ -125,7 +125,7 @@ const ListItem = () => {
       ownerName: user.name,
       price: tradeOptions.price || 0,
     };
-
+    console.log(itemData)
     dispatch(beginCreation(itemData));
     dispatch(createItem());
     setTitle("");
@@ -156,7 +156,6 @@ const ListItem = () => {
     <div className="px-3 py-2 bg-gray-100 min-h-screen">
       <div className="max-w-2xl mx-auto">
         <form onSubmit={handleSubmit}>
-          {/* Image Upload Section */}
           <div className="mb-6 space-y-4">
             <h3 className="font-semibold text-xl sm:text-2xl text-gray-800 border-b border-gray-200 pb-2">
               Upload Item Photos

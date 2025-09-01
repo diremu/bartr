@@ -74,7 +74,6 @@ const convertBeforeUpload = (e) => {
       console.log(product.ownerEmail, product.ownerName)
       dispatch(
         completeUpload({
-          file: currentUpload,
           user: currentUser,
           title: title,
           description: description,
