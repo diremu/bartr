@@ -11,6 +11,8 @@ app.use(express.static("public"))
 app.use(cors(corsOptions))
 
 app.use('/', require("./routes/root"))
+app.use('/signup', require("./routes/signup"))
+app.use('/login', require("./routes/login"))
 
 app.listen(port, () => {
     console.log(`The server is running on port ${port}`)
