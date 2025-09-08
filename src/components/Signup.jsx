@@ -2,6 +2,17 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { attemptSignup, clearErrors } from '../userSlice';
+import emailjs from '@emailjs/browser';
+
+const sendRegEmail = (emailData) => {
+  emailjs.send(process.env.VITE_REG_SERVICE_ID, process.env.VITE_REG_TEMPLATE_ID, emailData, process.env.VITE_REG_PUBLIC_KEY)
+    .then((response) => {
+      console.log('Email sent successfully:', response);
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+    });
+}
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -12,23 +23,44 @@ const Signup = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { signupError, signupLoading, isAuthenticated } = useSelector(state => state.user);
+  const [signupError, setSignupError] = useState(null);
+  const [signupLoading, setSignupLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    dispatch(clearErrors());
-  }, [dispatch]);
 
   useEffect(() => {
     if (isAuthenticated) {
+      sendRegEmail({
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+      });
       navigate('/');
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(attemptSignup(formData));
+    setSignupLoading(true);
+    setSignupError(null);
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setIsAuthenticated(true);
+      } else {
+        setSignupError(data.message || 'Signup failed');
+      }
+    } catch (error) {
+      setSignupError('Network error');
+    }
+    setSignupLoading(false);
   };
 
   return (

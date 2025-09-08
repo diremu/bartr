@@ -1,9 +1,4 @@
-const usersDB = {
-  users: require("../model/users.json"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
+const User = require("../model/User");
 const bcrypt = require("bcrypt");
 
 const handleLogin = async (req, res) => {
@@ -12,7 +7,7 @@ const handleLogin = async (req, res) => {
     return res
       .status(400)
       .json({ message: "User Email and Password are necessary" });
-  const existingUser = usersDB.users.find((person) => person.email === email);
+  const existingUser = await User.findOne({email}).exec()
   if (!existingUser) return res.status(401);
   const userPass = await bcrypt.compare(password, existingUser.password);
   if (userPass) {
