@@ -5,7 +5,7 @@ import { attemptSignup, clearErrors } from '../userSlice';
 import emailjs from '@emailjs/browser';
 
 const sendRegEmail = (emailData) => {
-  emailjs.send(process.env.VITE_REG_SERVICE_ID, process.env.VITE_REG_TEMPLATE_ID, emailData, process.env.VITE_REG_PUBLIC_KEY)
+  emailjs.send(import.meta.env.VITE_REG_SERVICE_ID, import.meta.env.VITE_REG_TEMPLATE_ID, emailData, import.meta.env.VITE_REG_PUBLIC_KEY)
     .then((response) => {
       console.log('Email sent successfully:', response);
     })
@@ -35,6 +35,7 @@ const Signup = () => {
         name: `${formData.firstName} ${formData.lastName}`,
         email: formData.email,
       });
+
       navigate('/');
     }
   }, [isAuthenticated]);
@@ -43,8 +44,10 @@ const Signup = () => {
     e.preventDefault();
     setSignupLoading(true);
     setSignupError(null);
+    dispatchEvent(attemptSignup({...formData}))
+
     try {
-      const response = await fetch('/api/signup', {
+      const response = await fetch('http://localhost:3200/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,11 +57,13 @@ const Signup = () => {
       const data = await response.json();
       if (response.ok) {
         setIsAuthenticated(true);
+        console.log('Signup successful');
       } else {
         setSignupError(data.message || 'Signup failed');
       }
     } catch (error) {
       setSignupError('Network error');
+      console.error(error)
     }
     setSignupLoading(false);
   };

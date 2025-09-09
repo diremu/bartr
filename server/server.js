@@ -6,6 +6,7 @@ const cors = require("cors")
 const corsOptions = require("./config/corsOptions")
 const mongoose = require("mongoose")
 const connectDB = require("./config/dbConnection")
+const verifyJWT = require("./middleware/verifyJWT")
 
 connectDB();
 //to handle json data
@@ -17,6 +18,9 @@ app.use(cors(corsOptions))
 app.use('/', require("./routes/root"))
 app.use('/signup', require("./routes/signup"))
 app.use('/login', require("./routes/login"))
+
+app.use('/items', require('./routes/items'))
+app.use('/list-item',verifyJWT, require("./routes/items"))
 
 //this sets it up so that the server starts once mongoose has confirmed a db connection
 mongoose.connection.once("open", () => {

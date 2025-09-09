@@ -1,11 +1,26 @@
 import Card from "./components/Card";
-import { Items, Categories, Testimonials, choiceCards } from "./components/data";
+import { Items as fallbackItems, Categories, Testimonials, choiceCards } from "./components/data";
 import FeaturesCard from "./components/FeaturesCard"
 import Footer from "./components/Footer";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import {useEffect, useState} from "react";
 
 export default function Landing() {
+  const [Items, setItems] = useState(fallbackItems);
+  useEffect(() => {
+    fetch("http://localhost:3200/items")
+    .then(res => {
+      if (!res.ok) throw new Error("Network wasn't strong enough")
+      return res.json()
+    }).then(data => {
+      setItems(data.items)
+    }).catch (err => {
+      console.error("Fetch error: ", err)
+      setItems(fallbackItems)
+    })
+  }, [])
+  //the code above tries to fetch the data from the backend then display that
   const imgUrl =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuB9TxmopJZytwUCJUiPSVwGKGBUN35kGNQ9nTZ0QCeZL2GDs-8Rm3yuwK9uTiy1XM2fchfQRrWc_28tvjaxB82rPJ0qAclVCUGCim3nOcto0bvjw4ddwkcOHyuE08I_M0EFS9GLACaBCU1aOBpzcRhbMYiy65p5LrUJvFaCdMvamZs1SfS--T3c2r5uGwUuaGavDQskVvMFF2-OBJP7zkLJ6OqibgfRKky4uGBX4VNuqN98c45P7efWhYXijdbNyHwfIUvzuR7Hsn8";
     const nav = useNavigate();

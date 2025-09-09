@@ -1,5 +1,6 @@
 const User = require("../model/User");
 const bcrypt = require("bcrypt");
+const {generateAccessToken} = require('../utils/tokenUtils.js')
 
 const handleLogin = async (req, res) => {
   const { email, password } = req.body;
@@ -11,7 +12,8 @@ const handleLogin = async (req, res) => {
   if (!existingUser) return res.status(401);
   const userPass = await bcrypt.compare(password, existingUser.password);
   if (userPass) {
-    res.status(200).json({ message: "The user has been verified" });
+    const accessToken = await generateAccessToken({userId: existingUser._id, email: existingUser.email})
+    res.status(200).json({accessToken, message: "The user has been verified" });
   } else {
     res.status(402).json({ message: "Wrong Password" });
   }
