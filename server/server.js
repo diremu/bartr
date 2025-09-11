@@ -21,6 +21,7 @@ app.use('/login', require("./routes/login"))
 
 app.use('/items', require('./routes/items'))
 app.use('/list-item',verifyJWT, require("./routes/items"))
+app.use('/otp', verifyJWT, require('./routes/otp-gen.js'))
 
 //this sets it up so that the server starts once mongoose has confirmed a db connection
 mongoose.connection.once("open", () => {
