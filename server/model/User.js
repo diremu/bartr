@@ -21,7 +21,8 @@ const userSchema = new schema({
     refreshToken: {
         type: String,
         required: true
-    }
+    },
+    otp: Number
 })
 
 module.exports = mongoose.model("User", userSchema)

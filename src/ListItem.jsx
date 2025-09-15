@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useRef, useEffect } from "react";
 import { beginCreation, createItem } from "./itemsSlice";
-import {useNavigate} from "react-router"
+import { useNavigate } from "react-router";
 
 const ListItem = () => {
   const navigate = useNavigate();
@@ -54,7 +54,6 @@ const ListItem = () => {
     }
     const fileArray = Array.from(files);
     const imageUrls = fileArray.map((file) => ({
-      file: file,
       preview: URL.createObjectURL(file),
       name: file.name,
     }));
@@ -75,7 +74,7 @@ const ListItem = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let hasError = false;
@@ -125,31 +124,43 @@ const ListItem = () => {
       ownerName: user.name,
       price: tradeOptions.price || 0,
     };
-    console.log(itemData)
-    dispatch(beginCreation(itemData));
-    dispatch(createItem());
-    setTitle("");
-    setDescription("");
-    setCategory("");
-    images.forEach((image) => {
-      URL.revokeObjectURL(image.preview);
-    });
-    setImages([]);
-    setTradeOptions({
-      electronics: false,
-      furniture: false,
-      technology: false,
-      automobiles: false,
-      clothing: false,
-      price: 0,
-    });
-    setError({ image: "", title: "", category: "", description: "" });
-
-    if (imageRef.current) {
-      imageRef.current.value = "";
+    console.log(itemData);
+    try {
+      const response = await fetch("/items", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(itemData),
+      });
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        dispatch(beginCreation(itemData));
+        dispatch(createItem());
+      }
+      setTitle("");
+      setDescription("");
+      setCategory("");
+      images.forEach((image) => {
+        URL.revokeObjectURL(image.preview);
+      });
+      setImages([]);
+      setTradeOptions({
+        electronics: false,
+        furniture: false,
+        technology: false,
+        automobiles: false,
+        clothing: false,
+        price: 0,
+      });
+      setError({ image: "", title: "", category: "", description: "" });
+      if (imageRef.current) {
+        imageRef.current.value = "";
+      }
+      alert("Item submitted successfully!");
+      navigate("/categories");
+    } catch (err) {
+      console.log(err.message);
     }
-    alert("Item submitted successfully!");
-    navigate("/categories")
   };
 
   return (

@@ -22,55 +22,33 @@ const ForgotPassword = () => {
   const navigate = useNavigate();
 
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
     setError("");
     if (!basicRegex.test(userEmail)) {
       setError("Invalid email format");
       return;
     }
-    if (email.includes(userEmail)) {
-      const generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
-      dispatch(makeOTP({ user: userEmail, otp: generatedOTP }));
-      
-      const emailTemplate = {
-        email: userEmail,
-        passcode: generatedOTP,
-        time: new Date().toLocaleTimeString(),
-      };
-      console.log(emailTemplate);
-      emailjs
-        .send(
-          import.meta.env.VITE_SERVICE_ID,
-          import.meta.env.VITE_TEMPLATE_ID,
-          emailTemplate,
-          import.meta.env.VITE_PUBLIC_KEY
-        )
-        .then(
-          (response) => {
-            console.log(
-              "Email sent successfully",
-              response.status,
-              response.text
-            );
-            if (response.status === 200) {
-              sendCode(true);
-              setError("");
-              verifyCorrectCode(false);}
-          },
-          (error) => {
-            console.log("An error occurred", error);
-          }
-        );
-      // console.log(import.meta.env.VITE_SERVICE_ID);
-    } else if (userEmail.trim() === "") {
-      setError("Input your email");
-    } else {
-      setError("Email not found");
+    try {
+      const response = await fetch("/otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: userEmail })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        sendCode(true);
+        setError("");
+        verifyCorrectCode(false);
+      } else {
+        setError(data.message || "Failed to generate OTP");
+      }
+    } catch (err) {
+      setError("Server error. Please try again later.");
     }
   }
 
-  function checkCode(e) {
+  async function checkCode(e) {
     e.preventDefault();
     setError("");
     if (userOtp.trim().length !== 6) {
@@ -78,11 +56,21 @@ const ForgotPassword = () => {
       verifyCorrectCode(false);
       return;
     }
-    if (userOtp === pin.otp) {
-      verifyCorrectCode(true);
-      console.log("OTP verification successful");
-    } else {
-      setError("Wrong Code. Please try again");
+    try {
+      const response = await fetch("/otp/otp-check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: userEmail, otp: userOtp })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        verifyCorrectCode(true);
+        setError("");
+      } else {
+        setError(data.message || "Wrong Code. Please try again");
+      }
+    } catch (err) {
+      setError("Server error. Please try again later.");
     }
   }
 
